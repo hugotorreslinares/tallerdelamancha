@@ -4,16 +4,18 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
+    name: Deploy to Hostinger
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
+      - name: Deploy theme via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -21,11 +23,20 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           protocol: ftp
+
+          # Carpeta del tema en el servidor
           server-dir: public_html/wp-content/themes/wordpress-theme/
+
+          # Carpeta del tema dentro del repositorio
           local-dir: ./wordpress-theme/
+
+          # Mantiene sincronizado el servidor eliminando archivos borrados en Git
+          dangerous-clean-slate: false
+
           exclude: |
             **/.git*
-            **/.git*/**
             **/.github/**
-            **/node_modules/**
+            **/README.md
             **/.DS_Store
+            **/node_modules/**
+            **/.vscode/**
