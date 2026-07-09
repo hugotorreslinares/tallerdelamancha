@@ -1,0 +1,17 @@
+/*
+Theme Name: Tinta Brava
+Theme URI: https://tintabrava.co
+Author: Tinta Brava
+Author URI: https://tintabrava.co
+Description: Tema personalizado para Tinta Brava — tienda de kits de iniciación en linograbado, serigrafía y litografía. Diseño mobile-first, optimizado para SEO y para uso como catálogo con WhatsApp.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tinta-brava
+Tags: catalog, woocommerce, custom-colors, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/* Este archivo es solo la cabecera del tema. Los estilos están en assets/css/ */
