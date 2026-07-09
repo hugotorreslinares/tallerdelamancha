@@ -23,7 +23,7 @@ jobs:
           protocol: ftp
           server-dir: public_html/wp-content/themes/wordpress-theme/
           local-dir: ./wordpress-theme/
-           exclude: |
+          exclude: |
             **/.git*
             **/.git*/**
             **/.github/**
