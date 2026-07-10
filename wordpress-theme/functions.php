@@ -42,23 +42,6 @@ function tinta_brava_setup() {
 }
 add_action( 'after_setup_theme', 'tinta_brava_setup' );
 
-/**
- * Enqueue de scripts y estilos
- */
-function tinta_brava_scripts() {
-  $css = array( 'reset.css', 'tokens.css', 'base.css', 'components.css', 'pages.css' );
-  foreach ( $css as $file ) {
-    wp_enqueue_style( 'tinta-brava-' . $file, TINTA_BRAVA_URI . '/assets/css/' . $file, array(), TINTA_BRAVA_VERSION );
-  }
-  wp_enqueue_style( 'tinta-brava-fonts', 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap', array(), null );
-
-  wp_enqueue_script( 'tinta-brava-main', TINTA_BRAVA_URI . '/assets/js/main.js', array(), TINTA_BRAVA_VERSION, true );
-
-  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
-  }
-}
-add_action( 'wp_enqueue_scripts', 'tinta_brava_scripts' );
 
 /**
  * Widgets
@@ -114,84 +97,66 @@ function tinta_brava_customize_register( $wp_customize ) {
     'section' => 'tinta_brava_contact',
     'type'    => 'email',
   ) );
+
+
+  /**
+   * Sección de imagenes home
+   */
+
+      $wp_customize->add_section(
+        'tinta_brava_home',
+        array(
+            'title'    => 'Inicio',
+            'priority' => 30,
+        )
+    );
+
+    // Imagen 1
+    $wp_customize->add_setting(
+        'tinta_brava_hero_image_1',
+        array(
+            'sanitize_callback' => 'absint',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Media_Control(
+            $wp_customize,
+            'tinta_brava_hero_image_1',
+            array(
+                'label'     => 'Imagen Hero 1',
+                'section'   => 'tinta_brava_home',
+                'mime_type' => 'image',
+            )
+        )
+    );
+
+    // Imagen 2
+    $wp_customize->add_setting(
+        'tinta_brava_hero_image_2',
+        array(
+            'sanitize_callback' => 'absint',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Media_Control(
+            $wp_customize,
+            'tinta_brava_hero_image_2',
+            array(
+                'label'     => 'Imagen Hero 2',
+                'section'   => 'tinta_brava_home',
+                'mime_type' => 'image',
+            )
+        )
+    );
 }
 add_action( 'customize_register', 'tinta_brava_customize_register' );
 
 /**
- * Helpers
- */
-function tinta_brava_whatsapp_url( $message = '' ) {
-  $num = get_theme_mod( 'tinta_brava_whatsapp', '573000000000' );
-  return 'https://wa.me/' . $num . '?text=' . rawurlencode( $message );
-}
-
-function tinta_brava_phone_link() {
-  return get_theme_mod( 'tinta_brava_whatsapp', '573000000000' );
-}
-
-function tinta_brava_instagram_url() {
-  $user = get_theme_mod( 'tinta_brava_instagram', 'tintabrava' );
-  return 'https://instagram.com/' . $user;
-}
-
-function tinta_brava_email_link() {
-  return 'mailto:' . get_theme_mod( 'tinta_brava_email', 'hola@tintabrava.co' );
-}
-
-/**
- * Formatear precio en COP
- */
-function tinta_brava_format_price( $amount ) {
-  return '$ ' . number_format( (float) $amount, 0, ',', '.' ) . ' COP';
-}
-
-/**
- * Personalizar excerpt
- */
-function tinta_brava_excerpt_length( $length ) {
-  return 24;
-}
-add_filter( 'excerpt_length', 'tinta_brava_excerpt_length' );
-
-function tinta_brava_excerpt_more( $more ) {
-  return '…';
-}
-add_filter( 'excerpt_more', 'tinta_brava_excerpt_more' );
-
-/**
- * Soporte para WooCommerce
- */
-function tinta_brava_woocommerce_support() {
-  add_theme_support( 'woocommerce', array(
-    'thumbnail_image_width' => 600,
-    'single_image_width'    => 800,
-    'product_grid'          => array(
-      'default_rows'    => 3,
-      'min_rows'        => 1,
-      'max_rows'        => 10,
-      'default_columns' => 3,
-      'min_columns'     => 1,
-      'max_columns'     => 4,
-    ),
-  ) );
-  add_theme_support( 'wc-product-gallery-zoom' );
-  add_theme_support( 'wc-product-gallery-lightbox' );
-  add_theme_support( 'wc-product-gallery-slider' );
-}
-add_action( 'after_setup_theme', 'tinta_brava_woocommerce_support' );
-
-/**
- * Desactivar estilos por defecto de WooCommerce (usamos los nuestros)
- */
-function tinta_brava_dequeue_wc_styles( $enqueue_styles ) {
-  unset( $enqueue_styles['woocommerce-general'] );
-  return $enqueue_styles;
-}
-add_filter( 'woocommerce_enqueue_styles', 'tinta_brava_dequeue_wc_styles' );
-
-/**
  * Cargar helpers
  */
+require_once TINTA_BRAVA_DIR . '/inc/enqueue.php';
 require_once TINTA_BRAVA_DIR . '/inc/helpers.php';
 require_once TINTA_BRAVA_DIR . '/inc/shortcodes.php';
 require_once TINTA_BRAVA_DIR . '/inc/setup.php';

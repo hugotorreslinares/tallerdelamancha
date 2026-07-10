@@ -5,6 +5,15 @@
  * @package TintaBrava
  */
 get_header();
+$image1 = wp_get_attachment_image_url(
+    get_theme_mod( 'tinta_brava_hero_image_1' ),
+    'medium'
+);
+
+$image2 = wp_get_attachment_image_url(
+    get_theme_mod( 'tinta_brava_hero_image_2' ),
+    'medium'
+);
 ?>
 
 <section class="hero">
@@ -24,9 +33,20 @@ get_header();
       </ul>
     </div>
     <div class="hero-media" aria-hidden="true">
-      <div class="hero-photo hero-photo-1"></div>
-      <div class="hero-photo hero-photo-2"></div>
-      <div class="hero-stamp">★ <?php esc_html_e( 'Edición limitada', 'tinta-brava' ); ?></div>
+      <div
+    class="hero-photo hero-photo-1"
+    <?php if ( $image1 ) : ?>
+        style="background-image:url('<?php echo esc_url( $image1 ); ?>')"
+    <?php endif; ?>
+></div>
+
+<div
+    class="hero-photo hero-photo-2"
+    <?php if ( $image2 ) : ?>
+        style="background-image:url('<?php echo esc_url( $image2 ); ?>')"
+    <?php endif; ?>
+></div>
+      <div class="hero-stamp">★ <?php esc_html_e( 'Disponibilidad limitada', 'tinta-brava' ); ?></div>
     </div>
   </div>
 </section>

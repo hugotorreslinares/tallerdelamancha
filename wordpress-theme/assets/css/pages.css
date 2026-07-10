@@ -51,28 +51,28 @@
 .hero-photo {
   position: absolute;
   border-radius: var(--radius-lg);
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
   box-shadow: var(--shadow-lg);
+  background-position: center;
+  background-repeat: no-repeat !important;
 }
 .hero-photo-1 {
   inset: 0;
-  background: linear-gradient(135deg, #B4651A 0%, #2D4A3E 100%);
+ 
 }
 .hero-photo-2 {
   width: 60%;
   aspect-ratio: 1;
   bottom: -5%;
   right: -8%;
-  background: var(--color-paper);
+   /* background: var(--color-paper); */
   border: 8px solid var(--color-paper);
-  display: grid;
+  display: none;
   place-items: center;
   font-family: var(--font-serif);
   font-size: 4rem;
   color: var(--color-ink);
 }
-.hero-photo-2::before { content: '印'; }
 .hero-stamp {
   position: absolute;
   top: 16px;

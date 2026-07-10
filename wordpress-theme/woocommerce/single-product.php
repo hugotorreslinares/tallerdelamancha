@@ -7,13 +7,12 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+get_header();
+$product = wc_get_product( get_the_ID() );
 
-global $product;
-
-if ( ! $product || ! $product instanceof WC_Product ) {
-  return;
+if ( ! $product ) {
+    wp_die('No se pudo cargar el producto.');
 }
-
 $is_coming_soon = get_post_meta( $product->get_id(), '_tinta_brava_coming_soon', true );
 $wa_message     = sprintf( 'Hola, quiero el %s', $product->get_name() );
 ?>
@@ -131,3 +130,4 @@ $wa_message     = sprintf( 'Hola, quiero el %s', $product->get_name() );
     </div>
   </div>
 </section>
+<?php get_footer(); ?>

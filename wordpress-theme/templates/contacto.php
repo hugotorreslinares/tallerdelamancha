@@ -33,23 +33,23 @@ get_header();
             <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); display: grid; place-items: center; color: white; flex-shrink: 0;">◉</div>
             <div>
               <strong>Instagram</strong>
-              <span>@<?php echo esc_html( get_theme_mod( 'tinta_brava_instagram', 'tintabrava' ) ); ?> · <?php esc_html_e( 'DM abiertas', 'tinta-brava' ); ?></span>
+              <span>@<?php echo esc_html( get_theme_mod( 'tinta_brava_instagram', 'eltallerdelamancha' ) ); ?> · <?php esc_html_e( 'DM abiertas', 'tinta-brava' ); ?></span>
             </div>
           </a>
           <a class="contact-channel" href="<?php echo esc_url( tinta_brava_email_link() ); ?>">
             <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-ink); display: grid; place-items: center; color: var(--color-paper); flex-shrink: 0;">@</div>
             <div>
               <strong><?php esc_html_e( 'Correo', 'tinta-brava' ); ?></strong>
-              <span><?php echo esc_html( get_theme_mod( 'tinta_brava_email', 'hola@tintabrava.co' ) ); ?></span>
+              <span><?php echo esc_html( get_theme_mod( 'tinta_brava_email', 'contacto@tallerdelamancha.com' ) ); ?></span>
             </div>
           </a>
-          <div class="contact-channel">
+          <!-- <div class="contact-channel">
             <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-moss); display: grid; place-items: center; color: var(--color-paper); flex-shrink: 0;">◐</div>
             <div>
               <strong><?php esc_html_e( 'Taller físico', 'tinta-brava' ); ?></strong>
               <span>Chapinero, Bogotá · <?php esc_html_e( 'Con cita previa', 'tinta-brava' ); ?></span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
