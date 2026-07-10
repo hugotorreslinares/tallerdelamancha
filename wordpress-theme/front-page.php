@@ -219,5 +219,5 @@ if ( $featured->have_posts() ) :
     </div>
   </div>
 </section>
-
+<!-- VERSION 2026-07-10 11:42 -->
 <?php get_footer(); ?>
