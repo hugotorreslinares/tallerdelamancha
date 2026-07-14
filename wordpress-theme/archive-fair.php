@@ -67,7 +67,7 @@ get_header();
     ?>
 
     <div class="fair-map" aria-label="Mapa de ferias en Bogotá">
-      <p><?php esc_html_e( 'Mapa de ferias en Bogotá (insertar embed de Google Maps aquí)', 'tinta-brava' ); ?></p>
+      <p><?php esc_html_e( 'Mapa de ferias en Bogotá ', 'tinta-brava' ); ?></p>
     </div>
 
     <h2 style="margin-top: 3rem;"><?php esc_html_e( 'Ferias pasadas', 'tinta-brava' ); ?></h2>

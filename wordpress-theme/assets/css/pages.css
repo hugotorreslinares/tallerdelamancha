@@ -124,6 +124,7 @@
   position: relative;
   overflow: hidden;
 }
+.featured-photo img { width: 100%; height: 100%; object-fit: cover; }
 .featured-photo::after {
   content: '';
   position: absolute;
@@ -281,6 +282,7 @@
   position: relative;
   overflow: hidden;
 }
+.gallery-main img { width: 100%; height: 100%; object-fit: cover; }
 .gallery-main::after {
   content: 'Kit Linograbado';
   position: absolute;

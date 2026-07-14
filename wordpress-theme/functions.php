@@ -209,7 +209,7 @@ function tinta_brava_fair_meta_boxes() {
     __( 'Detalles de la feria', 'tinta-brava' ),
     'tinta_brava_fair_details_render',
     'fair',
-    'side',
+    'normal',
     'high'
   );
 }
