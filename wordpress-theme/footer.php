@@ -10,11 +10,22 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
+       <?php if ( has_custom_logo() ) :  
+      $image = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+      ?>
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand brand-footer">
+        <span class="brand-mark custom-logo" aria-hidden="true">
+          <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
+       </span>
+        <span class="brand-name"><?php bloginfo( 'name' ); ?></span>
+      </a>
+      <?php else : ?>   
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand brand-footer">
         <span class="brand-mark" aria-hidden="true">◐</span>
         <span class="brand-name"><?php bloginfo( 'name' ); ?></span>
       </a>
-      <p class="footer-tag"><?php esc_html_e( 'Kits de iniciación en linograbado, serigrafía y litografía. Bogotá, Colombia.', 'tinta-brava' ); ?></p>
+         <?php endif; ?>
+      <p class="footer-tag"><?php esc_html_e( 'Kits de iniciación en linograbado y serigrafía. Bogotá, Colombia.', 'tinta-brava' ); ?></p>
     </div>
     <div>
       <h4><?php esc_html_e( 'Catálogo', 'tinta-brava' ); ?></h4>

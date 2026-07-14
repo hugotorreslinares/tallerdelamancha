@@ -52,49 +52,34 @@ $image2 = wp_get_attachment_image_url(
 </section>
 
 <section class="section section-categories">
-  <?php 
 
-/*   imagenes de las categorias de productos */
-
-    $linograbadothumbnail_id = get_term_meta( get_term_by( 'slug', 'linograbado', 'product_cat' )->term_id, 'thumbnail_id', true );
-    $imagelinograbado = wp_get_attachment_image_url( $linograbadothumbnail_id, 'large' );
-
-        $serigrafiathumbnail_id = get_term_meta( get_term_by( 'slug', 'serigrafia', 'product_cat' )->term_id, 'thumbnail_id', true );
-    $imageserigrafia = wp_get_attachment_image_url( $serigrafiathumbnail_id, 'large' );
-
-
-
-      ?>
   <div class="container">
     <header class="section-head">
       <h2><?php esc_html_e( 'Elige por dónde empezar', 'tinta-brava' ); ?></h2>
       <p><?php esc_html_e( 'Tres técnicas, una misma idea: que termines con una estampa en la mano.', 'tinta-brava' ); ?></p>
     </header>
-    <div class="grid grid-2">
-      <a class="card category" href="<?php echo esc_url( home_url( '/kits/#linograbado' ) ); ?>">
-        <div class="card-img cat-lino"> <img src="<?php echo esc_url( $imagelinograbado ); ?>" alt=""></div>
+    <?php $categories = get_terms(array(
+            'taxonomy'   => 'product_cat',
+            'hide_empty' => true,
+        ));
+        $numcategories = "grid-" . ( count($categories) > 4 ?  2 : count($categories) );
+        ?>
+    <div class="grid <?php echo esc_attr( $numcategories ); ?>">
+      <?php
+        
+        foreach ( $categories as $category ) {
+                $thumbnail_id = get_term_meta( get_term_by( 'slug', $category->slug, 'product_cat' )->term_id, 'thumbnail_id', true );
+            $image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
+      ?>
+      <a class="card category" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
+        <div class="card-img cat-lino"> <img src="<?php echo esc_url( $image ); ?>" alt=""></div>
         <div class="card-body">
-          <h3><?php esc_html_e( 'Linograbado', 'tinta-brava' ); ?></h3>
-          <p><?php esc_html_e( 'La forma más directa de empezar a grabar. Cortas, entintas, presionas.', 'tinta-brava' ); ?></p>
+          <h3><?php echo esc_html( $category->name ); ?></h3>
+          <p><?php echo esc_html( $category->description ); ?></p>
           <span class="card-link"><?php esc_html_e( 'Ver kit →', 'tinta-brava' ); ?></span>
         </div>
       </a>
-      <a class="card category" href="<?php echo esc_url( home_url( '/kits/#serigrafia' ) ); ?>">
-        <div class="card-img cat-seri"> <img src="<?php echo esc_url( $imageserigrafia ); ?>" alt=""></div>
-        <div class="card-body">
-          <h3><?php esc_html_e( 'Serigrafía', 'tinta-brava' ); ?></h3>
-          <p><?php esc_html_e( 'Estampado textil y de papel con emulsión y bastidor. Más materiales, más tirada.', 'tinta-brava' ); ?></p>
-          <span class="card-link"><?php esc_html_e( 'Ver kit →', 'tinta-brava' ); ?></span>
-        </div>
-      </a>
-     <!--  <a class="card category" href="<?php echo esc_url( home_url( '/kits/#litografia' ) ); ?>">
-        <div class="card-img cat-lito"></div>
-        <div class="card-body">
-          <h3><?php esc_html_e( 'Litografía', 'tinta-brava' ); ?> <span class="badge"><?php esc_html_e( 'Pronto', 'tinta-brava' ); ?></span></h3>
-          <p><?php esc_html_e( 'La técnica de las piedras. Un kit premium para cuando estés listo para el siguiente paso.', 'tinta-brava' ); ?></p>
-          <span class="card-link"><?php esc_html_e( 'Ver kit →', 'tinta-brava' ); ?></span>
-        </div>
-      </a> -->
+    <?php } ?>
     </div>
   </div>
 </section>
