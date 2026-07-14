@@ -24,10 +24,16 @@
 <header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-      <?php if ( has_custom_logo() ) : the_custom_logo(); else : ?>
+      <?php if ( has_custom_logo() ) :  
+      $image = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+      ?>
+        <span class="brand-mark custom-logo" aria-hidden="true">
+          <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />  
+       </span>
+      <?php else : ?>
         <span class="brand-mark" aria-hidden="true">◐</span>
-        <span class="brand-name"><?php bloginfo( 'name' ); ?></span>
       <?php endif; ?>
+      <span class="brand-name"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
     </a>
 
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
