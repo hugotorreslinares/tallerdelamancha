@@ -261,4 +261,9 @@ a:hover { color: var(--color-ochre); }
   }
 }
 
-.site-header.is-scrolled { box-shadow: var(--shadow-sm); }
+.site-header.is-scrolled { 
+  box-shadow: var(--shadow-sm);
+  padding-top: 20px;
+  padding-bottom: 15px;
+  background-color: #ffffff3d; 
+  }
