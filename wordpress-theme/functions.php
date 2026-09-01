@@ -67,6 +67,113 @@ function tinta_brava_customize_register( $wp_customize ) {
     'title'    => __( 'Datos de contacto', 'tinta-brava' ),
     'priority' => 30,
   ) );
+  // Título principal
+  $wp_customize->add_setting(
+    'tinta_brava_hero_title',
+    array(
+      'default'           => 'Empieza a estampar en casa, una tirada a la vez.',
+      'sanitize_callback' => 'sanitize_text_field',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_hero_title',
+    array(
+      'label'   => __( 'Título principal', 'tinta-brava' ),
+      'section' => 'tinta_brava_home',
+      'type'    => 'text',
+    )
+  );
+
+  // Descripción
+  $wp_customize->add_setting(
+    'tinta_brava_hero_lead',
+    array(
+      'default'           => 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto.',
+      'sanitize_callback' => 'sanitize_textarea_field',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_hero_lead',
+    array(
+      'label'   => __( 'Descripción', 'tinta-brava' ),
+      'section' => 'tinta_brava_home',
+      'type'    => 'textarea',
+    )
+  );
+
+  // Texto botón 1
+  $wp_customize->add_setting(
+    'tinta_brava_hero_button_1_text',
+    array(
+      'default'           => 'Ver los kits',
+      'sanitize_callback' => 'sanitize_text_field',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_hero_button_1_text',
+    array(
+      'label'   => __( 'Texto botón principal', 'tinta-brava' ),
+      'section' => 'tinta_brava_home',
+      'type'    => 'text',
+    )
+  );
+
+  // Enlace botón 1
+  $wp_customize->add_setting(
+    'tinta_brava_hero_button_1_url',
+    array(
+      'default'           => home_url( '/kits/' ),
+      'sanitize_callback' => 'esc_url_raw',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_hero_button_1_url',
+    array(
+      'label'   => __( 'Enlace botón principal', 'tinta-brava' ),
+      'section' => 'tinta_brava_home',
+      'type'    => 'url',
+    )
+  );
+
+  // Texto botón 2
+  $wp_customize->add_setting(
+    'tinta_brava_hero_button_2_text',
+    array(
+      'default'           => 'Aprende primero',
+      'sanitize_callback' => 'sanitize_text_field',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_hero_button_2_text',
+    array(
+      'label'   => __( 'Texto botón secundario', 'tinta-brava' ),
+      'section' => 'tinta_brava_home',
+      'type'    => 'text',
+    )
+  );
+
+  // Enlace botón 2
+  $wp_customize->add_setting(
+    'tinta_brava_hero_button_2_url',
+    array(
+      'default'           => home_url( '/tutoriales/' ),
+      'sanitize_callback' => 'esc_url_raw',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_hero_button_2_url',
+    array(
+      'label'   => __( 'Enlace botón secundario', 'tinta-brava' ),
+      'section' => 'tinta_brava_home',
+      'type'    => 'url',
+    )
+  );
 
   $wp_customize->add_setting( 'tinta_brava_whatsapp', array(
     'default'           => '573000000000',
@@ -102,54 +209,53 @@ function tinta_brava_customize_register( $wp_customize ) {
   /**
    * Sección de imagenes home
    */
+  $wp_customize->add_section(
+    'tinta_brava_home',
+    array(
+      'title'    => __( 'Hero inicio', 'tinta-brava' ),
+      'priority' => 30,
+    )
+  );
 
-      $wp_customize->add_section(
-        'tinta_brava_home',
-        array(
-            'title'    => 'Inicio',
-            'priority' => 30,
-        )
-    );
+  // Imagen 1
+  $wp_customize->add_setting(
+    'tinta_brava_hero_image_1',
+    array(
+      'sanitize_callback' => 'absint',
+    )
+  );
 
-    // Imagen 1
-    $wp_customize->add_setting(
-        'tinta_brava_hero_image_1',
-        array(
-            'sanitize_callback' => 'absint',
-        )
-    );
+  $wp_customize->add_control(
+    new WP_Customize_Media_Control(
+      $wp_customize,
+      'tinta_brava_hero_image_1',
+      array(
+        'label'     => __( 'Imagen Hero 1', 'tinta-brava' ),
+        'section'   => 'tinta_brava_home',
+        'mime_type' => 'image',
+      )
+    )
+  );
 
-    $wp_customize->add_control(
-        new WP_Customize_Media_Control(
-            $wp_customize,
-            'tinta_brava_hero_image_1',
-            array(
-                'label'     => 'Imagen Hero 1',
-                'section'   => 'tinta_brava_home',
-                'mime_type' => 'image',
-            )
-        )
-    );
+  // Imagen 2
+  $wp_customize->add_setting(
+    'tinta_brava_hero_image_2',
+    array(
+      'sanitize_callback' => 'absint',
+    )
+  );
 
-    // Imagen 2
-    $wp_customize->add_setting(
-        'tinta_brava_hero_image_2',
-        array(
-            'sanitize_callback' => 'absint',
-        )
-    );
-
-    $wp_customize->add_control(
-        new WP_Customize_Media_Control(
-            $wp_customize,
-            'tinta_brava_hero_image_2',
-            array(
-                'label'     => 'Imagen Hero 2',
-                'section'   => 'tinta_brava_home',
-                'mime_type' => 'image',
-            )
-        )
-    );
+  $wp_customize->add_control(
+    new WP_Customize_Media_Control(
+      $wp_customize,
+      'tinta_brava_hero_image_2',
+      array(
+        'label'     => __( 'Imagen Hero 2', 'tinta-brava' ),
+        'section'   => 'tinta_brava_home',
+        'mime_type' => 'image',
+      )
+    )
+  );
 }
 add_action( 'customize_register', 'tinta_brava_customize_register' );
 

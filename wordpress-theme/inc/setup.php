@@ -31,9 +31,17 @@ function tinta_brava_after_switch_theme() {
 add_action( 'after_switch_theme', 'tinta_brava_after_switch_theme' );
 
 /**
- * Sembrar valores por defecto al instalar WooCommerce por primera vez
+ * Sembrar valores por defecto al instalar WooCommerce por primera vez.
+ * Corre una sola vez (flag en opción), no en cada request.
  */
 function tinta_brava_woocommerce_defaults() {
+  if ( ! class_exists( 'WooCommerce' ) ) {
+    return;
+  }
+  if ( get_option( 'tinta_brava_wc_defaults_done' ) ) {
+    return;
+  }
+
   // Forzar pesos colombianos como moneda por defecto
   update_option( 'woocommerce_currency', 'COP' );
   update_option( 'woocommerce_currency_pos', 'left_space' );
@@ -55,5 +63,7 @@ function tinta_brava_woocommerce_defaults() {
       wp_delete_post( $page->ID, true );
     }
   }
+
+  update_option( 'tinta_brava_wc_defaults_done', 1 );
 }
 add_action( 'woocommerce_init', 'tinta_brava_woocommerce_defaults' );

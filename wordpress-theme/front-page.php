@@ -23,9 +23,15 @@ $image2 = wp_get_attachment_image_url(
       <h1 class="display"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' ) ); ?></h1>
       <p class="lead"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_lead', 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto. Diseñados y armados en taller, con materiales que de verdad se usan.' ) ); ?></p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="<?php echo esc_url( home_url( '/kits/' ) ); ?>"><?php esc_html_e( 'Ver los kits', 'tinta-brava' ); ?></a>
-        <a class="btn btn-ghost" href="<?php echo esc_url( home_url( '/tutoriales/' ) ); ?>"><?php esc_html_e( 'Aprende primero', 'tinta-brava' ); ?></a>
-      </div>
+       <a class="btn btn-primary"
+   href="<?php echo esc_url( get_theme_mod( 'tinta_brava_hero_button_1_url', home_url( '/kits/' ) ) ); ?>">
+    <?php echo esc_html( get_theme_mod( 'tinta_brava_hero_button_1_text', 'Ver los kits' ) ); ?>
+</a>
+
+<a class="btn btn-ghost"
+   href="<?php echo esc_url( get_theme_mod( 'tinta_brava_hero_button_2_url', home_url( '/tutoriales/' ) ) ); ?>">
+    <?php echo esc_html( get_theme_mod( 'tinta_brava_hero_button_2_text', 'Aprende primero' ) ); ?>
+</a>      </div>
       <ul class="hero-meta" role="list">
         <li><strong>+50</strong> <?php esc_html_e( 'estudiantes han estampado con nosotros', 'tinta-brava' ); ?></li>
         <li><strong>3</strong> <?php esc_html_e( 'técnicas en un solo catálogo', 'tinta-brava' ); ?></li>
@@ -58,21 +64,22 @@ $image2 = wp_get_attachment_image_url(
       <h2><?php esc_html_e( 'Elige por dónde empezar', 'tinta-brava' ); ?></h2>
       <p><?php esc_html_e( 'Tres técnicas, una misma idea: que termines con una estampa en la mano.', 'tinta-brava' ); ?></p>
     </header>
-    <?php $categories = get_terms(array(
-            'taxonomy'   => 'product_cat',
-            'hide_empty' => true,
-        ));
-        $numcategories = "grid-" . ( count($categories) > 4 ?  2 : count($categories) );
-        ?>
+    <?php
+    $categories = get_terms( array(
+      'taxonomy'   => 'product_cat',
+      'hide_empty' => true,
+    ) );
+    if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) :
+      $numcategories = 'grid-' . ( count( $categories ) > 4 ? 2 : count( $categories ) );
+    ?>
     <div class="grid <?php echo esc_attr( $numcategories ); ?>">
       <?php
-        
         foreach ( $categories as $category ) {
-                $thumbnail_id = get_term_meta( get_term_by( 'slug', $category->slug, 'product_cat' )->term_id, 'thumbnail_id', true );
-            $image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
+          $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
+          $image        = wp_get_attachment_image_url( $thumbnail_id, 'large' );
       ?>
       <a class="card category" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
-        <div class="card-img cat-lino"> <img src="<?php echo esc_url( $image ); ?>" alt=""></div>
+        <div class="card-img cat-lino"> <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $category->name ); ?>"></div>
         <div class="card-body">
           <h3><?php echo esc_html( $category->name ); ?></h3>
           <p><?php echo esc_html( $category->description ); ?></p>
@@ -81,6 +88,7 @@ $image2 = wp_get_attachment_image_url(
       </a>
     <?php } ?>
     </div>
+    <?php endif; ?>
   </div>
 </section>
 
@@ -220,8 +228,8 @@ if ( $next_fair->have_posts() ) :
             </ul>
 
             <a class="btn btn-primary"
-               href="<?php echo esc_url( home_url('/ferias/') ); ?>">
-                Ver todas las ferias
+               href="<?php echo esc_url( home_url( '/ferias/' ) ); ?>">
+                <?php esc_html_e( 'Ver todas las ferias', 'tinta-brava' ); ?>
             </a>
 
         </div>
@@ -241,22 +249,6 @@ if ( $next_fair->have_posts() ) :
 wp_reset_postdata();
 endif;
 ?>
-<!-- <section class="section section-fair">
-  <div class="container fair-grid">
-    <div>
-      <p class="eyebrow"><?php esc_html_e( 'Próxima feria', 'tinta-brava' ); ?></p>
-      <h2><?php esc_html_e( 'Te esperamos en BADA Bogotá', 'tinta-brava' ); ?></h2>
-      <p><?php esc_html_e( 'Estaremos con stand propio, mostrando los kits en vivo y haciendo demostraciones de linograbado. Pásate, prueba las herramientas y te llevas tu kit con descuento de feria.', 'tinta-brava' ); ?></p>
-      <ul class="fair-meta" role="list">
-        <li><strong><?php esc_html_e( 'Fecha:', 'tinta-brava' ); ?></strong> 12-14 <?php esc_html_e( 'de septiembre', 'tinta-brava' ); ?></li>
-        <li><strong><?php esc_html_e( 'Lugar:', 'tinta-brava' ); ?></strong> Corferias, Bogotá</li>
-        <li><strong><?php esc_html_e( 'Stand:', 'tinta-brava' ); ?></strong> P-218, <?php esc_html_e( 'pasillo de ilustración', 'tinta-brava' ); ?></li>
-      </ul>
-      <a class="btn btn-primary" href="<?php echo esc_url( home_url( '/ferias/' ) ); ?>"><?php esc_html_e( 'Ver todas las ferias', 'tinta-brava' ); ?></a>
-    </div>
-    <div class="fair-photo" aria-hidden="true"></div>
-  </div>
-</section> -->
 
 <section class="section section-blog">
   <div class="container">
@@ -295,5 +287,4 @@ endif;
     </div>
   </div>
 </section>
-<!-- VERSION 2026-07-10 11:42 -->
 <?php get_footer(); ?>
