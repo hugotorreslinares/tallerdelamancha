@@ -40,3 +40,7 @@ jobs:
             **/.DS_Store
             **/node_modules/**
             **/.vscode/**
+
+      - name: Purge LiteSpeed Cache
+        run: |
+          curl -sf "https://tallerdelamancha.com/wp-content/themes/wordpress-theme/purge-cache.php?token=${{ secrets.LSCACHE_PURGE_TOKEN }}"
