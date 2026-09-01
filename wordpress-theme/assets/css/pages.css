@@ -2,7 +2,6 @@
 
 /* Hero */
 .hero {
-  padding: var(--space-7) 0 var(--space-8);
   background:
     radial-gradient(circle at 20% 20%, rgba(180,101,26,0.08), transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(45,74,62,0.06), transparent 50%),
@@ -43,7 +42,7 @@
 
 .hero-media {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 7 / 5;
   border-radius: var(--radius-xl);
   background: var(--color-ochre-soft);
   overflow: hidden;

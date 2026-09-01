@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" --max-time 5 https://fonts.gstatic.com)",
+      "Bash(curl -s -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0.0.0 Safari/537.36\" \"https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap\" -o /tmp/fonts.css)",
+      "Read(//tmp/**)",
+      "Bash(python3 -)",
+      "Bash(awk '/\\\\/\\\\* latin \\\\*\\\\// && $0 !~ /latin-ext/ {flag=1} flag{print} flag && /^}/{flag=0}' /tmp/fonts.css)",
+      "Bash(curl -sL -o wordpress-theme/assets/fonts/fraunces-latin.woff2 \"https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeA.woff2\")",
+      "Bash(curl -sL -o wordpress-theme/assets/fonts/inter-latin.woff2 \"https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2\")",
+      "Bash(file wordpress-theme/assets/fonts/*.woff2)",
+      "Bash(php -l wordpress-theme/inc/enqueue.php)",
+      "Bash(php -l wordpress-theme/header.php)"
+    ]
+  }
+}
