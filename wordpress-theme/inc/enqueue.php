@@ -26,6 +26,7 @@ function tinta_brava_asset_version( $file ) {
 function tinta_brava_scripts() {
 
 	$css_files = array(
+		'fonts.css',
 		'reset.css',
 		'tokens.css',
 		'base.css',
@@ -44,13 +45,6 @@ function tinta_brava_scripts() {
 			tinta_brava_asset_version( 'assets/css/' . $file )
 		);
 	}
-
-	wp_enqueue_style(
-		'tinta-brava-fonts',
-		'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap',
-		array(),
-		null
-	);
 
 	wp_enqueue_script(
 		'tinta-brava-main',

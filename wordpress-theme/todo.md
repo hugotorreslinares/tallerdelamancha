@@ -69,7 +69,7 @@ Estado: `[ ]` pendiente · `[x]` resuelto · `[~]` en progreso
 
 ## Opcional / a evaluar
 
-### [ ] 11. Google Fonts vía CDN externo
-- **Archivo:** `inc/enqueue.php:48-53`
+### [x] 11. Google Fonts vía CDN externo
+- **Archivo:** `inc/enqueue.php`, `header.php`
 - **Problema:** Carga desde `fonts.googleapis.com`, tema GDPR si hay tráfico UE.
-- **Plan:** Evaluar con el usuario si aplica (mercado es Colombia); si se decide self-host, descargar fuentes a `assets/fonts/` y actualizar `@font-face`.
+- **Resuelto:** Fuentes autoalojadas. Descargados `fraunces-latin.woff2` e `inter-latin.woff2` (subset latin, cubre español) a `assets/fonts/`, nuevo `assets/css/fonts.css` con `@font-face` local, enqueue actualizado en `inc/enqueue.php` (ya no pega a Google), `header.php` sin los `<link rel="preconnect">` a fonts.googleapis.com/gstatic.
