@@ -172,13 +172,13 @@ a:hover { color: var(--color-ochre); }
 
 /* Footer */
 .site-footer {
-  background: var(--color-footer-bg);
-  color: var(--color-footer-text);
+  background: var(--color-fixed-dark);
+  color: var(--color-fixed-light);
   padding: var(--space-9) 0 var(--space-6);
   margin-top: var(--space-9);
 }
 .site-footer h4 {
-  color: var(--color-footer-text);
+  color: var(--color-fixed-light);
   margin-bottom: var(--space-3);
   font-size: var(--fs-sm);
   text-transform: uppercase;
@@ -190,7 +190,7 @@ a:hover { color: var(--color-ochre); }
   gap: var(--space-6);
   margin-bottom: var(--space-7);
 }
-.brand-footer .brand-mark { background: var(--color-footer-text); color: var(--color-footer-bg); }
+.brand-footer .brand-mark { background: var(--color-fixed-light); color: var(--color-fixed-dark); }
 .footer-tag { color: rgba(244,239,230,0.7); margin-top: var(--space-3); max-width: 32ch; }
 .footer-links li { margin-bottom: var(--space-2); font-size: var(--fs-sm); }
 .footer-links a { color: rgba(244,239,230,0.8); }
@@ -207,7 +207,7 @@ a:hover { color: var(--color-ochre); }
   color: rgba(244,239,230,0.6);
 }
 .footer-legal a { color: rgba(244,239,230,0.6); margin: 0 var(--space-2); }
-.footer-legal a:hover { color: var(--color-paper); }
+.footer-legal a:hover { color: var(--color-fixed-light); }
 
 /* WhatsApp flotante */
 .float-whatsapp {

@@ -141,7 +141,7 @@
   width: 1.4rem;
   height: 1.4rem;
   background: var(--color-moss);
-  color: var(--color-paper);
+  color: var(--color-fixed-light);
   border-radius: 50%;
   display: grid;
   place-items: center;

@@ -14,9 +14,11 @@
   --color-whatsapp: #25D366;
   --color-whatsapp-dark: #128C7E;
 
-  /* Pie de página: siempre oscuro, no cambia con el tema */
-  --color-footer-bg: #323232;
-  --color-footer-text: #F4EFE6;
+  /* Par fijo, no cambia con el tema: para bandas de color propio
+     (footer, secciones sobre moss/ochre) donde el fondo no sigue
+     el tema y el texto necesita quedar siempre claro. */
+  --color-fixed-dark: #323232;
+  --color-fixed-light: #F4EFE6;
 
   /* Tipografía */
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
