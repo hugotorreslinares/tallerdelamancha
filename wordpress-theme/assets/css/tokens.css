@@ -14,6 +14,10 @@
   --color-whatsapp: #25D366;
   --color-whatsapp-dark: #128C7E;
 
+  /* Pie de página: siempre oscuro, no cambia con el tema */
+  --color-footer-bg: #323232;
+  --color-footer-text: #F4EFE6;
+
   /* Tipografía */
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -58,4 +62,24 @@
   --t-fast: 150ms ease;
   --t-base: 250ms ease;
   --t-slow: 400ms ease;
+}
+
+/* Modo oscuro: sigue las preferencias del sistema si no hay elección explícita */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-ink: #EDE7DA;
+    --color-paper: #1E1B17;
+    --color-paper-2: #29241D;
+    --color-line: #3A342A;
+    --color-muted: #A99C87;
+  }
+}
+
+/* Elección explícita del usuario (toggle), gana siempre sobre el sistema */
+:root[data-theme="dark"] {
+  --color-ink: #EDE7DA;
+  --color-paper: #1E1B17;
+  --color-paper-2: #29241D;
+  --color-line: #3A342A;
+  --color-muted: #A99C87;
 }

@@ -58,6 +58,37 @@
     });
   });
 
+  // Modo oscuro
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const STORAGE_KEY = 'tinta-brava-theme';
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const effectiveTheme = () => {
+      const explicit = document.documentElement.getAttribute('data-theme');
+      if (explicit === 'light' || explicit === 'dark') return explicit;
+      return media.matches ? 'dark' : 'light';
+    };
+
+    const syncIcon = () => {
+      themeToggle.classList.toggle('is-dark', effectiveTheme() === 'dark');
+    };
+
+    syncIcon();
+    media.addEventListener('change', () => {
+      if (!localStorage.getItem(STORAGE_KEY)) syncIcon();
+    });
+
+    themeToggle.addEventListener('click', () => {
+      const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem(STORAGE_KEY, next);
+      } catch (e) {}
+      syncIcon();
+    });
+  }
+
   // Galería producto
   document.querySelectorAll('.gallery-thumb').forEach(thumb => {
     thumb.addEventListener('click', () => {

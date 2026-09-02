@@ -8,6 +8,16 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem( 'tinta-brava-theme' );
+        if ( t === 'light' || t === 'dark' ) {
+          document.documentElement.setAttribute( 'data-theme', t );
+        }
+      } catch ( e ) {}
+    })();
+  </script>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1A1A1A" />
@@ -62,6 +72,10 @@
         </ul>
       <?php } ?>
       <a class="btn btn-primary nav-cta" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa un kit de Tinta Brava' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="<?php esc_attr_e( 'Cambiar a modo oscuro', 'tinta-brava' ); ?>">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+      </button>
     </nav>
   </div>
 </header>
