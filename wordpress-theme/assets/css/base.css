@@ -135,6 +135,25 @@ a:hover { color: var(--color-ochre); }
 }
 .primary-nav a:hover { color: var(--color-ink); }
 .nav-cta { display: inline-flex; }
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.lang-switch a {
+  color: var(--color-muted);
+  padding: 0.3rem 0.4rem;
+}
+.lang-switch a[aria-current="true"] { color: var(--color-ink); }
+.lang-switch li:not(:last-child)::after {
+  content: '/';
+  color: var(--color-line);
+  margin-inline-start: -0.1rem;
+}
 .theme-toggle {
   display: inline-grid;
   place-items: center;
