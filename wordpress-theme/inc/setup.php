@@ -75,14 +75,14 @@ add_action( 'woocommerce_init', 'tinta_brava_woocommerce_defaults' );
  */
 function tinta_brava_redirect_old_product_slug() {
   $uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-  header( 'X-TB-Debug: is404=' . ( is_404() ? '1' : '0' ) . ' uri=' . $uri );
-  if ( ! is_404() ) {
+  if ( ! preg_match( '#/product/([^/?]+)/?#', $uri, $m ) ) {
     return;
   }
-  if ( strpos( $uri, '/product/' ) === false ) {
+  $product = get_page_by_path( $m[1], OBJECT, 'product' );
+  if ( ! $product ) {
     return;
   }
-  $new_uri = str_replace( '/product/', '/producto/', $uri );
+  $new_uri = str_replace( '/product/' . $m[1], '/producto/' . $m[1], $uri );
   wp_safe_redirect( home_url( $new_uri ), 301 );
   exit;
 }
