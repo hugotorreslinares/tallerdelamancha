@@ -1,0 +1,492 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tinta Brava Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-02 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: tinta-brava\n"
+
+msgid "Algunas de las ferias donde ya estuvimos."
+msgstr "Some of the fairs we've been part of."
+
+msgid "Aprende"
+msgstr "Learn"
+
+msgid "Aprendes con las manos"
+msgstr "You work with your hands"
+
+msgid "Asunto"
+msgstr "Subject"
+
+msgid "Avisarme"
+msgstr "Notify me"
+
+msgid "Avísame cuando llegue"
+msgstr "Notify me when it's back"
+
+msgid "Añadir nueva feria"
+msgstr "Add new fair"
+
+msgid "Aún no hay productos en el catálogo."
+msgstr "No products in the catalog yet."
+
+msgid "Aún no hay tutoriales publicados."
+msgstr "No tutorials published yet."
+
+msgid "Cambiar a modo oscuro"
+msgstr "Switch to dark mode"
+
+msgid "Canales directos"
+msgstr "Direct channels"
+
+msgid "Catálogo"
+msgstr "Catalog"
+
+msgid "Ciudad"
+msgstr "City"
+
+msgid "Comunidad en ferias"
+msgstr "Community at fairs"
+
+msgid "Con cita previa"
+msgstr "By appointment"
+
+msgid "Consultar"
+msgstr "Price on request"
+
+msgid "Contacto"
+msgstr "Contact"
+
+msgid "Correo"
+msgstr "Email"
+
+msgid "Correo de contacto"
+msgstr "Contact email"
+
+msgid "Correo electrónico"
+msgstr "Email address"
+
+msgid "DM abiertas"
+msgstr "DMs open"
+
+msgid "Datos de contacto"
+msgstr "Contact info"
+
+msgid "Del blog"
+msgstr "From the blog"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Descripción completa"
+msgstr "Full description"
+
+msgid "Destacado"
+msgstr "Featured"
+
+msgid "Detalles Tinta Brava"
+msgstr "Tinta Brava details"
+
+msgid "Detalles de la feria"
+msgstr "Fair details"
+
+msgid "Devoluciones"
+msgstr "Returns"
+
+msgid "Disponibilidad limitada"
+msgstr "Limited availability"
+
+msgid "Duda sobre un kit"
+msgstr "Question about a kit"
+
+msgid "El grabado es una de las técnicas más antiguas y más gratificantes. Te obliga a ir lento, a mirar y a decidir cada línea."
+msgstr "Printmaking is one of the oldest and most rewarding techniques. It forces you to slow down, look closely, and decide every line."
+
+msgid "El taller"
+msgstr "The workshop"
+
+msgid "Elige por dónde empezar"
+msgstr "Choose where to start"
+
+msgid "En Bogotá hay un circuito enorme de ferias de diseño. Vas a encontrar tu gente."
+msgstr "Bogotá has a huge circuit of design fairs. You'll find your people."
+
+msgid "Enlace botón principal"
+msgstr "Primary button link"
+
+msgid "Enlace botón secundario"
+msgstr "Secondary button link"
+
+msgid "Enviar mensaje"
+msgstr "Send message"
+
+msgid "Envíos"
+msgstr "Shipping"
+
+msgid "Envíos a toda Colombia · Pago por transferencia Bancolombia, Nequi o Daviplata · Contra entrega solo en Bogotá"
+msgstr "Shipping across Colombia · Pay by bank transfer (Bancolombia, Nequi or Daviplata) · Cash on delivery in Bogotá only"
+
+msgid "Escríbenos por WhatsApp, te contamos qué kit te conviene según tu experiencia y lo separamos para la próxima feria o te lo enviamos a casa."
+msgstr "Message us on WhatsApp — we'll help you pick the right kit for your experience and either hold it for the next fair or ship it to your door."
+
+msgid "Escríbenos por WhatsApp, te preguntamos tu experiencia y te recomendamos el kit adecuado."
+msgstr "Message us on WhatsApp — tell us about your experience and we'll recommend the right kit."
+
+msgid "Escríbenos, separamos tu kit y te lo enviamos o lo recoges en la próxima feria."
+msgstr "Message us, we'll hold your kit and either ship it or you can pick it up at the next fair."
+
+msgid "Estado"
+msgstr "Status"
+
+msgid "Estampas por kit"
+msgstr "Prints per kit"
+
+msgid "Estaremos en estas ferias con stand propio, demostraciones en vivo y descuento especial por comprar en persona. Pásate, prueba las herramientas y resuelve dudas."
+msgstr "We'll be at these fairs with our own booth, live demos, and a special discount for buying in person. Stop by, try the tools, and ask us anything."
+
+msgid "Este kit está en desarrollo. Avísame por WhatsApp cuando esté disponible."
+msgstr "This kit is in the works. Notify me on WhatsApp when it's available."
+
+msgid "Fecha fin"
+msgstr "End date"
+
+msgid "Fecha inicio"
+msgstr "Start date"
+
+msgid "Feria"
+msgstr "Fair"
+
+msgid "Ferias"
+msgstr "Fairs"
+
+msgid "Ferias pasadas"
+msgstr "Past fairs"
+
+msgid "Ferias y eventos"
+msgstr "Fairs & events"
+
+msgid "Gubia de grabado profesional"
+msgstr "Professional carving gouge"
+
+msgid "Guías paso a paso, técnicas probadas en taller y respuestas a las preguntas que nos hacen por WhatsApp cada semana."
+msgstr "Step-by-step guides, techniques tested in the workshop, and answers to the questions we get on WhatsApp every week."
+
+msgid "Hablar por WhatsApp"
+msgstr "Chat on WhatsApp"
+
+msgid "Hecho con tinta y paciencia en Bogotá."
+msgstr "Made with ink and patience in Bogotá."
+
+msgid "Hero inicio"
+msgstr "Home hero"
+
+msgid "Horario"
+msgstr "Schedule"
+
+msgid "Horario:"
+msgstr "Schedule:"
+
+msgid "Imagen Hero 1"
+msgstr "Hero image 1"
+
+msgid "Imagen Hero 2"
+msgstr "Hero image 2"
+
+msgid "Inicio"
+msgstr "Home"
+
+msgid "Invitar a una feria"
+msgstr "Invite us to a fair"
+
+msgid "Invitarnos a una feria"
+msgstr "Invite us to a fair"
+
+msgid "Kits"
+msgstr "Kits"
+
+msgid "Kits de iniciación en linograbado y serigrafía. Bogotá, Colombia."
+msgstr "Starter kits for linocut and screen printing. Bogotá, Colombia."
+
+msgid "Kits de iniciación · Bogotá"
+msgstr "Starter kits · Bogotá"
+
+msgid "Leer →"
+msgstr "Read →"
+
+msgid "Linograbado"
+msgstr "Linocut"
+
+msgid "Litografía"
+msgstr "Lithography"
+
+msgid "Lugar"
+msgstr "Location"
+
+msgid "Lugar:"
+msgstr "Location:"
+
+msgid "Manual de 4 proyectos paso a paso"
+msgstr "Step-by-step manual with 4 projects"
+
+msgid "Mapa de ferias en Bogotá "
+msgstr "Map of fairs in Bogotá "
+
+msgid "Marcar como \"Próximamente\" (preventa)"
+msgstr "Mark as \"Coming soon\" (pre-order)"
+
+msgid "Mensaje"
+msgstr "Message"
+
+msgid "Mensaje WhatsApp personalizado (opcional)"
+msgstr "Custom WhatsApp message (optional)"
+
+msgid "Menú"
+msgstr "Menu"
+
+msgid "Menú del pie"
+msgstr "Footer menu"
+
+msgid "Menú principal"
+msgstr "Primary menu"
+
+msgid "Navegación principal"
+msgstr "Primary navigation"
+
+msgid "Nivel"
+msgstr "Level"
+
+msgid "No hay ferias próximas en este momento. Síguenos en Instagram para enterarte de la próxima."
+msgstr "No upcoming fairs right now. Follow us on Instagram to hear about the next one."
+
+msgid "No necesitas pantalla ni electricidad. Un banco, una gubia, una plancha y a trabajar."
+msgstr "No screen, no electricity needed. A workbench, a gouge, a plate — and you're working."
+
+msgid "No tienes permisos."
+msgstr "You don't have permission."
+
+msgid "Nombre"
+msgstr "Name"
+
+msgid "Número de WhatsApp (con código de país, sin +)"
+msgstr "WhatsApp number (with country code, no +)"
+
+msgid "O escríbenos aquí"
+msgstr "Or write to us here"
+
+msgid "Otro"
+msgstr "Other"
+
+msgid "Otros tutoriales"
+msgstr "More tutorials"
+
+msgid "Papel para grabado (10 hojas)"
+msgstr "Printmaking paper (10 sheets)"
+
+msgid "Pedir este kit por WhatsApp"
+msgstr "Order this kit on WhatsApp"
+
+msgid "Pedir por WhatsApp"
+msgstr "Order on WhatsApp"
+
+msgid "Persona (compartible)"
+msgstr "Person (shareable)"
+
+msgid "Personas"
+msgstr "People"
+
+msgid "Pie de página"
+msgstr "Footer"
+
+msgid "Plancha de linóleo 15×10 cm"
+msgstr "15×10 cm linoleum plate"
+
+msgid "Por %1$s · %2$s · %3$d min de lectura"
+msgstr "By %1$s · %2$s · %3$d min read"
+
+msgid "Por favor completa todos los campos."
+msgstr "Please fill in all the fields."
+
+msgid "Por proyecto"
+msgstr "Per project"
+
+msgid "Por qué aprender a estampar"
+msgstr "Why learn printmaking"
+
+msgid "Precio"
+msgstr "Price"
+
+msgid "Privacidad"
+msgstr "Privacy"
+
+msgid "Pronto"
+msgstr "Soon"
+
+msgid "Próxima"
+msgstr "Next"
+
+msgid "Próxima feria"
+msgstr "Next fair"
+
+msgid "Próximamente"
+msgstr "Coming soon"
+
+msgid "Próximamente:"
+msgstr "Coming soon:"
+
+msgid "Próximas ferias"
+msgstr "Upcoming fairs"
+
+msgid "Quiero pedir un kit"
+msgstr "I want to order a kit"
+
+msgid "Qué incluye (uno por línea)"
+msgstr "What's included (one per line)"
+
+msgid "Qué incluye el kit"
+msgstr "What's in the kit"
+
+msgid "Recomendadme un kit"
+msgstr "Recommend a kit for me"
+
+msgid "Reservar kit para recoger"
+msgstr "Reserve a kit for pickup"
+
+msgid "Reservar para feria"
+msgstr "Reserve for a fair"
+
+msgid "Resolver una duda"
+msgstr "Ask a question"
+
+msgid "Respuesta en horas"
+msgstr "We reply within hours"
+
+msgid "Saltar al contenido"
+msgstr "Skip to content"
+
+msgid "Serigrafía"
+msgstr "Screen printing"
+
+msgid "Si organizas una feria de diseño, ilustración o arte en Bogotá y crees que encajamos, escríbenos. Llevamos el taller a donde nos necesiten."
+msgstr "If you're organizing a design, illustration, or art fair in Bogotá and think we'd be a good fit, get in touch. We'll bring the workshop wherever we're needed."
+
+msgid "Si quieres un kit, resolver una duda, invitarnos a una feria o pedir un kit personalizado, escríbenos por aquí:"
+msgstr "Want a kit, have a question, want to invite us to a fair, or need a custom kit? Reach us here:"
+
+msgid "Si se deja vacío, se usa el nombre del producto."
+msgstr "If left empty, the product name is used."
+
+msgid "Stand (opcional)"
+msgstr "Booth (optional)"
+
+msgid "Stand:"
+msgstr "Booth:"
+
+msgid "Taller de grabado en Bogotá."
+msgstr "Printmaking workshop in Bogotá."
+
+msgid "Taller físico"
+msgstr "Physical workshop"
+
+msgid "Taller personalizado"
+msgstr "Custom workshop"
+
+msgid "Te respondemos por correo. Si prefieres WhatsApp, usa el botón verde de la esquina."
+msgstr "We'll reply by email. If you'd rather use WhatsApp, use the green button in the corner."
+
+msgid "Terminas con algo real"
+msgstr "You end up with something real"
+
+msgid "Texto botón principal"
+msgstr "Primary button text"
+
+msgid "Texto botón secundario"
+msgstr "Secondary button text"
+
+msgid "Tiempo por proyecto"
+msgstr "Time per project"
+
+msgid "Tintas al agua (negro, ocre, azul)"
+msgstr "Water-based inks (black, ochre, blue)"
+
+msgid "Todos los tutoriales →"
+msgstr "All tutorials →"
+
+msgid "Tres técnicas, una misma idea: que termines con una estampa en la mano."
+msgstr "Three techniques, one idea: you walk away with a print in hand."
+
+msgid "Tu mensaje ha sido enviado. Te respondemos en menos de 24 horas."
+msgstr "Your message has been sent. We'll reply within 24 hours."
+
+msgid "Tu primera estampa enmarcada vale más que cualquier curso en vídeo que dejaste a la mitad."
+msgstr "Your first framed print is worth more than any video course you left half-finished."
+
+msgid "Tutorial"
+msgstr "Tutorial"
+
+msgid "Tutoriales"
+msgstr "Tutorials"
+
+msgid "Términos"
+msgstr "Terms"
+
+msgid "Título principal"
+msgstr "Main title"
+
+msgid "Usuario de Instagram (sin @)"
+msgstr "Instagram username (no @)"
+
+msgid "Ver detalles"
+msgstr "View details"
+
+msgid "Ver kit →"
+msgstr "View kit →"
+
+msgid "Ver los kits"
+msgstr "Shop kits"
+
+msgid "Ver los kits primero"
+msgstr "See the kits first"
+
+msgid "Ver otros kits"
+msgstr "See other kits"
+
+msgid "Ver todas las ferias"
+msgstr "See all fairs"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "Widgets para el pie de página."
+msgstr "Widgets for the footer."
+
+msgid "a toda Colombia"
+msgstr "across Colombia"
+
+msgid "estudiantes han estampado con nosotros"
+msgstr "students have printed with us"
+
+msgid "técnicas en un solo catálogo"
+msgstr "techniques in one catalog"
+
+msgid "¡Gracias!"
+msgstr "Thanks!"
+
+msgid "¿Listo para empezar?"
+msgstr "Ready to get started?"
+
+msgid "¿No sabes cuál te conviene?"
+msgstr "Not sure which one's right for you?"
+
+msgid "¿Quieres que vayamos a tu feria?"
+msgstr "Want us at your fair?"
+
+msgid "¿Te animas?"
+msgstr "Ready to try it?"
+
+msgid "— Seleccionar —"
+msgstr "— Select —"
+

@@ -98,6 +98,29 @@ function tinta_brava_email_link() {
 }
 
 /**
+ * Traducir un valor editable desde el Customizer (hero) vía Polylang,
+ * si el plugin está activo. Sin Polylang, devuelve el valor tal cual.
+ */
+function tinta_brava_translate_mod( $value ) {
+  return function_exists( 'pll__' ) ? pll__( $value ) : $value;
+}
+
+/**
+ * Registrar en Polylang los textos del hero editables desde el Customizer,
+ * para que aparezcan en Idiomas → Traducciones.
+ */
+function tinta_brava_register_translatable_strings() {
+  if ( ! function_exists( 'pll_register_string' ) ) {
+    return;
+  }
+  pll_register_string( 'Hero - Título', get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' ), 'tinta-brava' );
+  pll_register_string( 'Hero - Descripción', get_theme_mod( 'tinta_brava_hero_lead', 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto. Diseñados y armados en taller, con materiales que de verdad se usan.' ), 'tinta-brava' );
+  pll_register_string( 'Hero - Botón 1', get_theme_mod( 'tinta_brava_hero_button_1_text', 'Ver los kits' ), 'tinta-brava' );
+  pll_register_string( 'Hero - Botón 2', get_theme_mod( 'tinta_brava_hero_button_2_text', 'Aprende primero' ), 'tinta-brava' );
+}
+add_action( 'init', 'tinta_brava_register_translatable_strings' );
+
+/**
  * Formatear precio en COP
  */
 function tinta_brava_format_price( $amount ) {
