@@ -100,7 +100,7 @@ $image2 = wp_get_attachment_image_url(
     'meta_key'       => 'total_sales',
     'orderby'        => 'meta_value_num',
     'order'          => 'DESC',
-    'lang'           => tinta_brava_current_lang(),
+    'meta_query'     => tinta_brava_lang_meta_query(),
   ) );
   if ( ! $featured->have_posts() ) {
     $featured = new WP_Query( array(
@@ -108,7 +108,7 @@ $image2 = wp_get_attachment_image_url(
       'posts_per_page' => 1,
       'orderby'        => 'date',
       'order'          => 'DESC',
-      'lang'           => tinta_brava_current_lang(),
+      'meta_query'     => tinta_brava_lang_meta_query(),
     ) );
   }
   if ( $featured->have_posts() ) :
@@ -182,7 +182,7 @@ $next_fair = new WP_Query( array(
     'meta_key'       => 'fair_date',
     'orderby'        => 'meta_value',
     'order'          => 'ASC',
-    'lang'           => tinta_brava_current_lang(),
+    'meta_query'     => tinta_brava_lang_meta_query(),
 ) );
 
 if ( $next_fair->have_posts() ) :

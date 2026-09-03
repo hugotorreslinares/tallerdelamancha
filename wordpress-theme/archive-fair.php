@@ -24,13 +24,12 @@ get_header();
     $upcoming = new WP_Query( array(
       'post_type'      => 'fair',
       'posts_per_page' => -1,
-      'meta_query'     => array(
+      'meta_query'     => tinta_brava_lang_meta_query( array(
         array( 'key' => 'fair_date', 'value' => $today, 'compare' => '>=', 'type' => 'DATE' ),
-      ),
+      ) ),
       'orderby' => 'meta_value',
       'meta_key' => 'fair_date',
       'order'   => 'ASC',
-      'lang'    => tinta_brava_current_lang(),
     ) );
 
     if ( $upcoming->have_posts() ) :
@@ -79,13 +78,12 @@ get_header();
       $past = new WP_Query( array(
         'post_type'      => 'fair',
         'posts_per_page' => 6,
-        'meta_query'     => array(
+        'meta_query'     => tinta_brava_lang_meta_query( array(
           array( 'key' => 'fair_date', 'value' => $today, 'compare' => '<', 'type' => 'DATE' ),
-        ),
+        ) ),
         'orderby' => 'meta_value',
         'meta_key' => 'fair_date',
         'order'   => 'DESC',
-        'lang'    => tinta_brava_current_lang(),
       ) );
       if ( $past->have_posts() ) :
         while ( $past->have_posts() ) : $past->the_post();

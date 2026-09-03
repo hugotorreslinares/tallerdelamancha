@@ -45,6 +45,7 @@ function tinta_brava_get_fairs( $args = array() ) {
     'orderby'        => 'meta_value',
     'meta_key'       => 'fair_date',
     'order'          => 'ASC',
+    'meta_query'     => tinta_brava_lang_meta_query(),
   );
   return new WP_Query( wp_parse_args( $args, $defaults ) );
 }
@@ -99,14 +100,58 @@ function tinta_brava_email_link() {
 }
 
 /**
- * Idioma actual de Polylang, para pasar explícitamente a WP_Query/get_terms
- * ('lang' => ...) en vez de depender del filtrado automático — algunos
- * post types custom (product, fair) no siempre se filtran solos.
- * Sin Polylang activo, devuelve '' (WP_Query lo ignora sin efecto).
+ * Idioma actual de Polylang. Sin Polylang activo, devuelve ''.
  */
 function tinta_brava_current_lang() {
   return function_exists( 'pll_current_language' ) ? pll_current_language() : '';
 }
+
+/**
+ * Filtro de idioma para 'product' y 'fair': Polylang solo filtra
+ * automáticamente (parámetro 'lang' en WP_Query) los post types que
+ * tiene registrados como gestionados — y registrar 'product' ahí
+ * generó conflicto con las reglas de URL de WooCommerce (rompió
+ * /product/slug/ con 404). Mientras no se resuelva eso (ver todo.md),
+ * el idioma de cada producto/feria se guarda aparte en el meta
+ * '_tb_lang' (ver tinta_brava_set_lang_meta) y se filtra por acá.
+ *
+ * Uso: 'meta_query' => tinta_brava_lang_meta_query( $meta_query_existente )
+ */
+function tinta_brava_lang_meta_query( $existing = array() ) {
+  $lang = tinta_brava_current_lang();
+  if ( ! $lang ) {
+    return $existing;
+  }
+  $existing[] = array(
+    'key'     => '_tb_lang',
+    'value'   => $lang,
+    'compare' => '=',
+  );
+  return $existing;
+}
+
+/**
+ * Mantiene sincronizado el meta '_tb_lang' con lo que Polylang ya sabe
+ * (pll_get_post_language() lee la relación de idioma directamente, sin
+ * importar si el post type está "gestionado" para el filtrado
+ * automático de queries). Así, cuando se cree una traducción nueva de
+ * un producto o feria desde el admin, el filtro de tinta_brava_lang_meta_query()
+ * la reconoce sin intervención manual.
+ */
+function tinta_brava_sync_lang_meta( $post_id, $post ) {
+  if ( ! function_exists( 'pll_get_post_language' ) ) {
+    return;
+  }
+  if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
+    return;
+  }
+  $lang = pll_get_post_language( $post_id );
+  if ( $lang ) {
+    update_post_meta( $post_id, '_tb_lang', $lang );
+  }
+}
+add_action( 'save_post_product', 'tinta_brava_sync_lang_meta', 20, 2 );
+add_action( 'save_post_fair', 'tinta_brava_sync_lang_meta', 20, 2 );
 
 /**
  * Traducir un valor editable desde el Customizer (hero) vía Polylang,
