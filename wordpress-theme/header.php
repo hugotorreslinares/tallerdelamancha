@@ -23,6 +23,14 @@
   <meta name="theme-color" content="#1A1A1A" />
   <link rel="profile" href="https://gmpg.org/xfn/11" />
   <?php wp_head(); ?>
+  <!-- DEBUG i18n:
+    locale=<?php echo esc_html( get_locale() ); ?>
+    loaded=<?php echo is_textdomain_loaded( 'tinta-brava' ) ? 'yes' : 'no'; ?>
+    pll_current=<?php echo function_exists( 'pll_current_language' ) ? esc_html( pll_current_language() ) : 'no-pll'; ?>
+    test="<?php echo esc_html__( 'Contacto', 'tinta-brava' ); ?>"
+    mofile=<?php echo esc_html( TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo' ); ?>
+    mofile_exists=<?php echo file_exists( TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo' ) ? 'yes' : 'no'; ?>
+  -->
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
