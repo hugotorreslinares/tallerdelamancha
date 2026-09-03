@@ -67,3 +67,22 @@ function tinta_brava_woocommerce_defaults() {
   update_option( 'tinta_brava_wc_defaults_done', 1 );
 }
 add_action( 'woocommerce_init', 'tinta_brava_woocommerce_defaults' );
+
+/**
+ * Redirección 301 desde el slug viejo de producto /product/ hacia el
+ * actual /producto/ (cambió al forzar la regeneración de permalinks
+ * el 2026-09-03). Evita romper enlaces ya compartidos o indexados.
+ */
+function tinta_brava_redirect_old_product_slug() {
+  if ( ! is_404() ) {
+    return;
+  }
+  $uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+  if ( strpos( $uri, '/product/' ) === false ) {
+    return;
+  }
+  $new_uri = str_replace( '/product/', '/producto/', $uri );
+  wp_safe_redirect( home_url( $new_uri ), 301 );
+  exit;
+}
+add_action( 'template_redirect', 'tinta_brava_redirect_old_product_slug' );

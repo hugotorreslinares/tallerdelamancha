@@ -102,7 +102,6 @@ $image2 = wp_get_attachment_image_url(
     'order'          => 'DESC',
     'lang'           => tinta_brava_current_lang(),
   ) );
-  $tb_debug_1 = $featured->found_posts;
   if ( ! $featured->have_posts() ) {
     $featured = new WP_Query( array(
       'post_type'      => 'product',
@@ -111,9 +110,6 @@ $image2 = wp_get_attachment_image_url(
       'order'          => 'DESC',
       'lang'           => tinta_brava_current_lang(),
     ) );
-    $tb_debug_2 = $featured->found_posts;
-    $tb_debug_3 = new WP_Query( array( 'post_type' => 'product', 'posts_per_page' => -1, 'post_status' => 'any' ) );
-    echo '<!-- TBDEBUG lang=' . esc_html( tinta_brava_current_lang() ) . ' q1=' . esc_html( $tb_debug_1 ) . ' q2=' . esc_html( $tb_debug_2 ) . ' all_products=' . esc_html( $tb_debug_3->found_posts ) . ' -->';
   }
   if ( $featured->have_posts() ) :
     while ( $featured->have_posts() ) : $featured->the_post();
