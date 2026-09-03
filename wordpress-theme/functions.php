@@ -17,7 +17,6 @@ define( 'TINTA_BRAVA_URI', get_template_directory_uri() );
  * Setup del tema
  */
 function tinta_brava_setup() {
-  load_theme_textdomain( 'tinta-brava', TINTA_BRAVA_DIR . '/languages' );
   add_theme_support( 'title-tag' );
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'custom-logo', array(
@@ -41,6 +40,17 @@ function tinta_brava_setup() {
   add_image_size( 'tinta-brava-hero', 1600, 1000, true );
 }
 add_action( 'after_setup_theme', 'tinta_brava_setup' );
+
+/**
+ * Cargar traducciones del theme. En 'init' (no 'after_setup_theme') para
+ * que Polylang ya haya determinado el idioma de la URL antes de que WP
+ * decida qué archivo .mo cargar — si se hace antes, siempre carga el
+ * locale por defecto del sitio.
+ */
+function tinta_brava_load_textdomain() {
+  load_theme_textdomain( 'tinta-brava', TINTA_BRAVA_DIR . '/languages' );
+}
+add_action( 'init', 'tinta_brava_load_textdomain' );
 
 
 /**
