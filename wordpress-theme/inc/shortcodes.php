@@ -116,14 +116,14 @@ function tinta_brava_fair_count_shortcode( $atts ) {
   $query = new WP_Query( array(
     'post_type'      => 'fair',
     'posts_per_page' => -1,
-    'meta_query'     => tinta_brava_lang_meta_query( array(
+    'meta_query'     => array(
       array(
         'key'     => 'fair_date',
         'value'   => $today,
         'compare' => $atts['type'] === 'past' ? '<' : '>=',
         'type'    => 'DATE',
       ),
-    ) ),
+    ),
     'fields' => 'ids',
   ) );
   return (string) $query->post_count;

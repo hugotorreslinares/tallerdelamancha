@@ -24,9 +24,9 @@ get_header();
     $upcoming = new WP_Query( array(
       'post_type'      => 'fair',
       'posts_per_page' => -1,
-      'meta_query'     => tinta_brava_lang_meta_query( array(
+      'meta_query'     => array(
         array( 'key' => 'fair_date', 'value' => $today, 'compare' => '>=', 'type' => 'DATE' ),
-      ) ),
+      ),
       'orderby' => 'meta_value',
       'meta_key' => 'fair_date',
       'order'   => 'ASC',
@@ -78,9 +78,9 @@ get_header();
       $past = new WP_Query( array(
         'post_type'      => 'fair',
         'posts_per_page' => 6,
-        'meta_query'     => tinta_brava_lang_meta_query( array(
+        'meta_query'     => array(
           array( 'key' => 'fair_date', 'value' => $today, 'compare' => '<', 'type' => 'DATE' ),
-        ) ),
+        ),
         'orderby' => 'meta_value',
         'meta_key' => 'fair_date',
         'order'   => 'DESC',

@@ -20,17 +20,17 @@ $image2 = wp_get_attachment_image_url(
   <div class="container hero-grid">
     <div class="hero-copy">
       <p class="eyebrow"><?php esc_html_e( 'Kits de iniciación · Bogotá', 'tinta-brava' ); ?></p>
-      <h1 class="display"><?php echo esc_html( tinta_brava_translate_mod( get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' ) ) ); ?></h1>
-      <p class="lead"><?php echo esc_html( tinta_brava_translate_mod( get_theme_mod( 'tinta_brava_hero_lead', 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto. Diseñados y armados en taller, con materiales que de verdad se usan.' ) ) ); ?></p>
+      <h1 class="display"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' ) ); ?></h1>
+      <p class="lead"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_lead', 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto. Diseñados y armados en taller, con materiales que de verdad se usan.' ) ); ?></p>
       <div class="hero-actions">
        <a class="btn btn-primary"
    href="<?php echo esc_url( get_theme_mod( 'tinta_brava_hero_button_1_url', home_url( '/kits/' ) ) ); ?>">
-    <?php echo esc_html( tinta_brava_translate_mod( get_theme_mod( 'tinta_brava_hero_button_1_text', 'Ver los kits' ) ) ); ?>
+    <?php echo esc_html( get_theme_mod( 'tinta_brava_hero_button_1_text', 'Ver los kits' ) ); ?>
 </a>
 
 <a class="btn btn-ghost"
    href="<?php echo esc_url( get_theme_mod( 'tinta_brava_hero_button_2_url', home_url( '/tutoriales/' ) ) ); ?>">
-    <?php echo esc_html( tinta_brava_translate_mod( get_theme_mod( 'tinta_brava_hero_button_2_text', 'Aprende primero' ) ) ); ?>
+    <?php echo esc_html( get_theme_mod( 'tinta_brava_hero_button_2_text', 'Aprende primero' ) ); ?>
 </a>      </div>
       <ul class="hero-meta" role="list">
         <li><strong>+50</strong> <?php esc_html_e( 'estudiantes han estampado con nosotros', 'tinta-brava' ); ?></li>
@@ -68,7 +68,6 @@ $image2 = wp_get_attachment_image_url(
     $categories = get_terms( array(
       'taxonomy'   => 'product_cat',
       'hide_empty' => true,
-      'lang'       => tinta_brava_current_lang(),
     ) );
     if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) :
       $numcategories = 'grid-' . ( count( $categories ) > 4 ? 2 : count( $categories ) );
@@ -100,7 +99,6 @@ $image2 = wp_get_attachment_image_url(
     'meta_key'       => 'total_sales',
     'orderby'        => 'meta_value_num',
     'order'          => 'DESC',
-    'meta_query'     => tinta_brava_lang_meta_query(),
   ) );
   if ( ! $featured->have_posts() ) {
     $featured = new WP_Query( array(
@@ -108,7 +106,6 @@ $image2 = wp_get_attachment_image_url(
       'posts_per_page' => 1,
       'orderby'        => 'date',
       'order'          => 'DESC',
-      'meta_query'     => tinta_brava_lang_meta_query(),
     ) );
   }
   if ( $featured->have_posts() ) :
@@ -182,7 +179,6 @@ $next_fair = new WP_Query( array(
     'meta_key'       => 'fair_date',
     'orderby'        => 'meta_value',
     'order'          => 'ASC',
-    'meta_query'     => tinta_brava_lang_meta_query(),
 ) );
 
 if ( $next_fair->have_posts() ) :
@@ -262,7 +258,7 @@ endif;
     </header>
     <div class="grid grid-3">
       <?php
-      $posts = new WP_Query( array( 'posts_per_page' => 3, 'lang' => tinta_brava_current_lang() ) );
+      $posts = new WP_Query( array( 'posts_per_page' => 3 ) );
       if ( $posts->have_posts() ) :
         while ( $posts->have_posts() ) : $posts->the_post();
       ?>

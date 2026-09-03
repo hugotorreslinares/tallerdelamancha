@@ -24,7 +24,6 @@ get_header();
         'posts_per_page' => 12,
         'orderby'        => 'menu_order date',
         'order'          => 'ASC',
-        'meta_query'     => tinta_brava_lang_meta_query(),
       ) );
       if ( $products->have_posts() ) :
         while ( $products->have_posts() ) : $products->the_post();
