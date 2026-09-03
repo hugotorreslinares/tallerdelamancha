@@ -50,7 +50,8 @@ add_action( 'after_setup_theme', 'tinta_brava_setup' );
  */
 function tinta_brava_load_textdomain() {
   unload_textdomain( 'tinta-brava' );
-  load_theme_textdomain( 'tinta-brava', TINTA_BRAVA_DIR . '/languages' );
+  $mofile = TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo';
+  $GLOBALS['tinta_brava_i18n_debug'] = load_textdomain( 'tinta-brava', $mofile );
 }
 add_action( 'template_redirect', 'tinta_brava_load_textdomain', 1 );
 

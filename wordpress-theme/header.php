@@ -30,6 +30,7 @@
     test="<?php echo esc_html__( 'Contacto', 'tinta-brava' ); ?>"
     mofile=<?php echo esc_html( TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo' ); ?>
     mofile_exists=<?php echo file_exists( TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo' ) ? 'yes' : 'no'; ?>
+    load_result=<?php echo isset( $GLOBALS['tinta_brava_i18n_debug'] ) ? var_export( $GLOBALS['tinta_brava_i18n_debug'], true ) : 'hook-did-not-run'; ?>
   -->
 </head>
 <body <?php body_class(); ?>>
