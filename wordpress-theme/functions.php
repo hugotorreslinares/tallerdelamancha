@@ -32,8 +32,8 @@ function tinta_brava_setup() {
   add_theme_support( 'editor-styles' );
 
   register_nav_menus( array(
-    'primary' => __( 'Menú principal', 'tinta-brava' ),
-    'footer'  => __( 'Menú del pie', 'tinta-brava' ),
+    'primary' => 'Menú principal',
+    'footer'  => 'Menú del pie',
   ) );
 
   add_image_size( 'tinta-brava-card', 600, 450, true );
