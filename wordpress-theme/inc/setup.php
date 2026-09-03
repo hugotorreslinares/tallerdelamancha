@@ -74,10 +74,11 @@ add_action( 'woocommerce_init', 'tinta_brava_woocommerce_defaults' );
  * el 2026-09-03). Evita romper enlaces ya compartidos o indexados.
  */
 function tinta_brava_redirect_old_product_slug() {
+  $uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+  header( 'X-TB-Debug: is404=' . ( is_404() ? '1' : '0' ) . ' uri=' . $uri );
   if ( ! is_404() ) {
     return;
   }
-  $uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
   if ( strpos( $uri, '/product/' ) === false ) {
     return;
   }
