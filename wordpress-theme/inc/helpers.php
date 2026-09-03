@@ -30,6 +30,7 @@ function tinta_brava_related_posts( $post_id = null, $count = 3 ) {
     'post__not_in'        => array( $post_id ),
     'category__in'        => $cats,
     'ignore_sticky_posts' => 1,
+    'lang'                => tinta_brava_current_lang(),
   ) );
   return $query;
 }

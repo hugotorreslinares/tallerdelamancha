@@ -125,6 +125,7 @@ function tinta_brava_fair_count_shortcode( $atts ) {
       ),
     ),
     'fields' => 'ids',
+    'lang'   => tinta_brava_current_lang(),
   ) );
   return (string) $query->post_count;
 }

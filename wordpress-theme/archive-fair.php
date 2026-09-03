@@ -30,6 +30,7 @@ get_header();
       'orderby' => 'meta_value',
       'meta_key' => 'fair_date',
       'order'   => 'ASC',
+      'lang'    => tinta_brava_current_lang(),
     ) );
 
     if ( $upcoming->have_posts() ) :
@@ -84,6 +85,7 @@ get_header();
         'orderby' => 'meta_value',
         'meta_key' => 'fair_date',
         'order'   => 'DESC',
+        'lang'    => tinta_brava_current_lang(),
       ) );
       if ( $past->have_posts() ) :
         while ( $past->have_posts() ) : $past->the_post();
