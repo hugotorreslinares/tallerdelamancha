@@ -52,7 +52,7 @@ function tinta_brava_load_textdomain() {
   unload_textdomain( 'tinta-brava' );
   load_theme_textdomain( 'tinta-brava', TINTA_BRAVA_DIR . '/languages' );
 }
-add_action( 'wp', 'tinta_brava_load_textdomain' );
+add_action( 'template_redirect', 'tinta_brava_load_textdomain', 1 );
 
 
 /**
