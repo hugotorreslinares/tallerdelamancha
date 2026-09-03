@@ -42,16 +42,22 @@ function tinta_brava_setup() {
 add_action( 'after_setup_theme', 'tinta_brava_setup' );
 
 /**
- * Cargar traducciones del theme. En 'wp' (no 'after_setup_theme' ni
- * 'init') para que Polylang ya haya resuelto la URL contra las reglas
- * de reescritura y determinado el idioma antes de que WP decida qué
- * archivo .mo cargar — si se hace antes, siempre carga el locale por
- * defecto del sitio sin importar la URL pedida.
+ * Cargar traducciones del theme.
+ *
+ * Dos ajustes necesarios para que funcione con Polylang:
+ * 1. Hook en 'template_redirect' (no 'after_setup_theme' ni 'init'):
+ *    Polylang recién determina el idioma de la URL después de resolver
+ *    las reglas de reescritura, así que cualquier hook más temprano
+ *    siempre carga el locale por defecto del sitio.
+ * 2. load_textdomain() directo con la ruta exacta, no
+ *    load_theme_textdomain(): esta última no cargaba el .mo (devolvía
+ *    silenciosamente false) pese a que el archivo existe y el locale
+ *    es correcto — probablemente por su resolución/caché interna de
+ *    rutas (WP_Textdomain_Registry).
  */
 function tinta_brava_load_textdomain() {
   unload_textdomain( 'tinta-brava' );
-  $mofile = TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo';
-  $GLOBALS['tinta_brava_i18n_debug'] = load_textdomain( 'tinta-brava', $mofile );
+  load_textdomain( 'tinta-brava', TINTA_BRAVA_DIR . '/languages/tinta-brava-' . get_locale() . '.mo' );
 }
 add_action( 'template_redirect', 'tinta_brava_load_textdomain', 1 );
 
