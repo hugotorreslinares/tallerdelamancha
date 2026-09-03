@@ -68,6 +68,7 @@ $image2 = wp_get_attachment_image_url(
     $categories = get_terms( array(
       'taxonomy'   => 'product_cat',
       'hide_empty' => true,
+      'lang'       => tinta_brava_current_lang(),
     ) );
     if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) :
       $numcategories = 'grid-' . ( count( $categories ) > 4 ? 2 : count( $categories ) );
@@ -99,6 +100,7 @@ $image2 = wp_get_attachment_image_url(
     'meta_key'       => 'total_sales',
     'orderby'        => 'meta_value_num',
     'order'          => 'DESC',
+    'lang'           => tinta_brava_current_lang(),
   ) );
   if ( ! $featured->have_posts() ) {
     $featured = new WP_Query( array(
@@ -106,6 +108,7 @@ $image2 = wp_get_attachment_image_url(
       'posts_per_page' => 1,
       'orderby'        => 'date',
       'order'          => 'DESC',
+      'lang'           => tinta_brava_current_lang(),
     ) );
   }
   if ( $featured->have_posts() ) :
@@ -179,6 +182,7 @@ $next_fair = new WP_Query( array(
     'meta_key'       => 'fair_date',
     'orderby'        => 'meta_value',
     'order'          => 'ASC',
+    'lang'           => tinta_brava_current_lang(),
 ) );
 
 if ( $next_fair->have_posts() ) :
@@ -258,7 +262,7 @@ endif;
     </header>
     <div class="grid grid-3">
       <?php
-      $posts = new WP_Query( array( 'posts_per_page' => 3 ) );
+      $posts = new WP_Query( array( 'posts_per_page' => 3, 'lang' => tinta_brava_current_lang() ) );
       if ( $posts->have_posts() ) :
         while ( $posts->have_posts() ) : $posts->the_post();
       ?>

@@ -98,6 +98,16 @@ function tinta_brava_email_link() {
 }
 
 /**
+ * Idioma actual de Polylang, para pasar explícitamente a WP_Query/get_terms
+ * ('lang' => ...) en vez de depender del filtrado automático — algunos
+ * post types custom (product, fair) no siempre se filtran solos.
+ * Sin Polylang activo, devuelve '' (WP_Query lo ignora sin efecto).
+ */
+function tinta_brava_current_lang() {
+  return function_exists( 'pll_current_language' ) ? pll_current_language() : '';
+}
+
+/**
  * Traducir un valor editable desde el Customizer (hero) vía Polylang,
  * si el plugin está activo. Sin Polylang, devuelve el valor tal cual.
  */
