@@ -42,15 +42,17 @@ function tinta_brava_setup() {
 add_action( 'after_setup_theme', 'tinta_brava_setup' );
 
 /**
- * Cargar traducciones del theme. En 'init' (no 'after_setup_theme') para
- * que Polylang ya haya determinado el idioma de la URL antes de que WP
- * decida qué archivo .mo cargar — si se hace antes, siempre carga el
- * locale por defecto del sitio.
+ * Cargar traducciones del theme. En 'wp' (no 'after_setup_theme' ni
+ * 'init') para que Polylang ya haya resuelto la URL contra las reglas
+ * de reescritura y determinado el idioma antes de que WP decida qué
+ * archivo .mo cargar — si se hace antes, siempre carga el locale por
+ * defecto del sitio sin importar la URL pedida.
  */
 function tinta_brava_load_textdomain() {
+  unload_textdomain( 'tinta-brava' );
   load_theme_textdomain( 'tinta-brava', TINTA_BRAVA_DIR . '/languages' );
 }
-add_action( 'init', 'tinta_brava_load_textdomain' );
+add_action( 'wp', 'tinta_brava_load_textdomain' );
 
 
 /**
