@@ -22,6 +22,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1A1A1A" />
   <link rel="profile" href="https://gmpg.org/xfn/11" />
+  <?php if ( is_front_page() ) :
+    $hero_image_1 = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_hero_image_1' ), 'medium' );
+  ?>
+  <link rel="preload" as="font" type="font/woff2" href="<?php echo esc_url( TINTA_BRAVA_URI . '/assets/fonts/imfell-english-italic.woff2' ); ?>" crossorigin="anonymous" />
+  <?php if ( $hero_image_1 ) : ?>
+  <link rel="preload" as="image" href="<?php echo esc_url( $hero_image_1 ); ?>" />
+  <?php endif; endif; ?>
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -33,7 +40,7 @@
   <div class="container header-inner">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
       <?php
-      $image = has_custom_logo() ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' ) : false;
+      $image = has_custom_logo() ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'thumbnail' ) : false;
       if ( $image ) :
       ?>
         <span class="brand-mark custom-logo" aria-hidden="true">

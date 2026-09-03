@@ -27,11 +27,7 @@ function tinta_brava_scripts() {
 
 	$css_files = array(
 		'fonts.css',
-		'reset.css',
-		'tokens.css',
-		'base.css',
-		'components.css',
-		'pages.css',
+		'theme.css',
 	);
 
 	foreach ( $css_files as $file ) {

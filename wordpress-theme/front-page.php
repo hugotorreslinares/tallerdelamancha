@@ -76,7 +76,7 @@ $image2 = wp_get_attachment_image_url(
       <?php
         foreach ( $categories as $category ) {
           $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
-          $image        = wp_get_attachment_image_url( $thumbnail_id, 'large' );
+          $image        = wp_get_attachment_image_url( $thumbnail_id, 'tinta-brava-card' );
       ?>
       <a class="card category" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
         <div class="card-img cat-lino"> <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $category->name ); ?>"></div>

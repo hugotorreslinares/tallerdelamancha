@@ -10,8 +10,9 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-       <?php if ( has_custom_logo() ) :  
-      $image = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+       <?php
+      $image = has_custom_logo() ? wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'thumbnail' ) : false;
+      if ( $image ) :
       ?>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand brand-footer">
         <span class="brand-mark custom-logo" aria-hidden="true">
