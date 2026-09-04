@@ -133,7 +133,7 @@ a:hover { color: var(--color-ochre); }
   font-weight: 500;
   color: var(--color-ink);
 }
-.primary-nav a:hover { color: var(--color-ink); }
+.primary-nav a:hover { color: var(--color-ochre); }
 .nav-cta { display: inline-flex; }
 .theme-toggle {
   display: inline-grid;
