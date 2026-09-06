@@ -13,15 +13,17 @@ Los valores reales viven en `assets/css/tokens.css` (variables) y `assets/css/ba
 | Token | Valor | Uso |
 |---|---|---|
 | `--color-ink` | `#323232` | Texto principal, fondos oscuros puntuales |
-| `--color-paper` | `#F4EFE6` | Fondo de página |
-| `--color-paper-2` | `#FFFFFF` | Superficies elevadas (cards, secciones alternas) |
-| `--color-ochre` | `#B4651A` | Acento de marca — eyebrows, links en hover, precios, badges |
-| `--color-ochre-soft` | `#E8C9A3` | Fondo de badges/placeholders con `--color-ochre` de texto |
+| `--color-paper` | `#E5D1D0` (soft blush) | Fondo de página |
+| `--color-paper-2` | `#F5E4D7` (powder petal) | Superficies elevadas (cards, secciones alternas) |
+| `--color-ochre` | `#73877B` (dusty olive) | Acento de marca — eyebrows, links en hover, precios, badges |
+| `--color-ochre-soft` | `color-mix(in srgb, var(--color-ochre) 35%, white)` | Fondo de badges/placeholders con `--color-ochre` de texto — se deriva del acento en vez de un hex suelto, para que combine automáticamente si el acento cambia |
 | `--color-moss` | `#2D4A3E` | Verde de marca — bandas de sección, iconos |
 | `--color-moss-soft` | `#C5D2C9` | Fondo de badges/placeholders con `--color-moss` de texto |
-| `--color-line` | `#D9D2C5` | Bordes, separadores |
+| `--color-line` | `#BDBBB6` (silver) | Bordes, separadores |
 | `--color-muted` | `#6B6357` | Texto secundario |
 | `--color-whatsapp` / `--color-whatsapp-dark` | `#25D366` / `#128C7E` | Exclusivo para CTAs de WhatsApp |
+
+> **Paleta 2026-09:** `paper`/`paper-2`/`ochre`/`line` vienen de la paleta nueva (dusty olive, muted teal, silver, soft blush, powder petal — 5 colores dados por el usuario). Quedaron **sin tocar** a propósito: `--color-ink` y `--color-muted` (la paleta no trae un tono suficientemente oscuro para texto legible — mezclarlo habría bajado el contraste bajo AA), `--color-moss` (usado como fondo de banda grande con texto claro encima — `muted-teal`/`dusty-olive` no dan suficiente contraste ahí, ver STYLEGUIDE §"Deuda conocida" si se quiere resolver más adelante) y `--color-whatsapp` (color funcional de marca de terceros). `muted-teal` (`#839788`) se usa solo en el degradado decorativo de `.hero` (no soporta texto encima, sin restricción de contraste).
 
 ### Modo oscuro
 
@@ -31,7 +33,7 @@ Se activa por `prefers-color-scheme` del sistema o por `data-theme="dark"` expl�
 
 ### Par fijo — regla importante
 
-`--color-fixed-dark` (`#323232`) y `--color-fixed-light` (`#F4EFE6`) **no cambian nunca**, ni con el tema. Son para bandas de color propio que deben leerse igual sin importar el tema del sitio: el footer, y cualquier sección con fondo `--color-moss` u `--color-ochre` (fondo constante).
+`--color-fixed-dark` (`#323232`) y `--color-fixed-light` (`#F5E4D7`, powder petal) **no cambian nunca**, ni con el tema. Son para bandas de color propio que deben leerse igual sin importar el tema del sitio: el footer, y cualquier sección con fondo `--color-moss` u `--color-ochre` (fondo constante).
 
 > **Regla:** si el fondo de un bloque es un color de marca constante (moss, ochre, o el footer), el texto va en `--color-fixed-light`, **nunca** en `--color-paper`. `--color-paper` cambia con el tema (se vuelve casi negro en modo oscuro) — usarlo ahí deja el texto ilegible. Este bug ya pasó una vez (section-why, about-hero, section-fair, footer) — no repetirlo.
 >

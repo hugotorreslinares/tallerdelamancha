@@ -2,13 +2,13 @@
 :root {
   /* Colores */
   --color-ink: #323232;
-  --color-paper: #F4EFE6;
-  --color-paper-2: #FFFFFF;
-  --color-ochre: #B4651A;
-  --color-ochre-soft: #E8C9A3;
+  --color-paper: #E5D1D0;
+  --color-paper-2: #F5E4D7;
+  --color-ochre: #73877B;
+  --color-ochre-soft: color-mix(in srgb, var(--color-ochre) 35%, white);
   --color-moss: #2D4A3E;
   --color-moss-soft: #C5D2C9;
-  --color-line: #D9D2C5;
+  --color-line: #BDBBB6;
   --color-muted: #6B6357;
   --color-success: #2D4A3E;
   --color-whatsapp: #25D366;
@@ -18,7 +18,7 @@
      (footer, secciones sobre moss/ochre) donde el fondo no sigue
      el tema y el texto necesita quedar siempre claro. */
   --color-fixed-dark: #323232;
-  --color-fixed-light: #F4EFE6;
+  --color-fixed-light: #F5E4D7;
 
   /* Tipografía */
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;

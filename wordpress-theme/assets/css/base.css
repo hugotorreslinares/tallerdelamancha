@@ -191,9 +191,9 @@ a:hover { color: var(--color-ochre); }
   margin-bottom: var(--space-7);
 }
 .brand-footer .brand-mark { background: var(--color-fixed-light); color: var(--color-fixed-dark); }
-.footer-tag { color: rgba(244,239,230,0.7); margin-top: var(--space-3); max-width: 32ch; }
+.footer-tag { color: rgba(245,228,215,0.7); margin-top: var(--space-3); max-width: 32ch; }
 .footer-links li { margin-bottom: var(--space-2); font-size: var(--fs-sm); }
-.footer-links a { color: rgba(244,239,230,0.8); }
+.footer-links a { color: rgba(245,228,215,0.8); }
 .footer-links a:hover { color: var(--color-ochre-soft); }
 .footer-bottom {
   display: flex;
@@ -202,11 +202,11 @@ a:hover { color: var(--color-ochre); }
   flex-wrap: wrap;
   gap: var(--space-3);
   padding-top: var(--space-5);
-  border-top: 1px solid rgba(244,239,230,0.15);
+  border-top: 1px solid rgba(245,228,215,0.15);
   font-size: var(--fs-sm);
-  color: rgba(244,239,230,0.6);
+  color: rgba(245,228,215,0.6);
 }
-.footer-legal a { color: rgba(244,239,230,0.6); margin: 0 var(--space-2); }
+.footer-legal a { color: rgba(245,228,215,0.6); margin: 0 var(--space-2); }
 .footer-legal a:hover { color: var(--color-fixed-light); }
 
 /* WhatsApp flotante */
