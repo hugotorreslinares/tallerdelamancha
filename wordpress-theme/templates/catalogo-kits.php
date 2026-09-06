@@ -69,7 +69,7 @@ get_header();
       <div class="cta-inner">
         <h2><?php esc_html_e( '¿No sabes cuál te conviene?', 'tinta-brava' ); ?></h2>
         <p><?php esc_html_e( 'Escríbenos por WhatsApp, te preguntamos tu experiencia y te recomendamos el kit adecuado.', 'tinta-brava' ); ?></p>
-        <a class="btn btn-primary btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, necesito ayuda eligiendo un kit' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Recomendadme un kit', 'tinta-brava' ); ?></a>
+        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, necesito ayuda eligiendo un kit' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Recomendadme un kit', 'tinta-brava' ); ?></a>
       </div>
     </div>
   </div>

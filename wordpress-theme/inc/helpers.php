@@ -148,3 +148,97 @@ function tinta_brava_dequeue_wc_styles( $enqueue_styles ) {
 }
 add_filter( 'woocommerce_enqueue_styles', 'tinta_brava_dequeue_wc_styles' );
 
+/**
+ * Ícono lineal estilo grabado para las categorías de producto.
+ * Devuelve SVG inline (currentColor) para poder colorearlo por CSS.
+ */
+function tinta_brava_category_icon_svg( $slug ) {
+  $icons = array(
+    'linograbado' => '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="52" x2="34" y2="30"/><line x1="34" y1="30" x2="47" y2="17"/><polygon points="47,17 56,8 53,17 47,20" fill="currentColor" stroke="none"/></svg>',
+    'serigrafia'  => '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="24" width="32" height="16" rx="8"/><line x1="20" y1="24" x2="20" y2="40"/><line x1="28" y1="24" x2="28" y2="40"/><line x1="36" y1="24" x2="36" y2="40"/><line x1="44" y1="32" x2="56" y2="20"/></svg>',
+    'litografia'  => '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12,44 12,28 24,18 52,18 52,34 40,44"/><line x1="12" y1="28" x2="40" y2="28"/><line x1="52" y1="18" x2="40" y2="28"/><line x1="40" y1="28" x2="40" y2="44"/></svg>',
+  );
+  if ( isset( $icons[ $slug ] ) ) {
+    return $icons[ $slug ];
+  }
+  // Genérico para categorías sin ícono dedicado.
+  return '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="18"/><line x1="32" y1="20" x2="32" y2="32"/><line x1="32" y1="32" x2="40" y2="38"/></svg>';
+}
+
+/**
+ * Color de acento rotativo para bloques de categoría (terracota, azul, mostaza).
+ */
+function tinta_brava_category_accent( $index ) {
+  $accents = array( 'terracotta', 'navy', 'mustard' );
+  return $accents[ $index % count( $accents ) ];
+}
+
+/**
+ * Rama con hojas, estilo grabado — decoración pequeña junto a titulares.
+ */
+function tinta_brava_leaf_branch_svg() {
+  return '<svg viewBox="0 0 60 140" fill="currentColor" aria-hidden="true">
+    <path d="M30 4 C31 30 29 55 30 80 C31 100 29 118 30 136" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M30 20 C18 14 8 18 4 28 C14 30 24 28 30 20 Z"/>
+    <path d="M30 42 C44 34 54 40 56 52 C44 52 34 50 30 42 Z"/>
+    <path d="M30 64 C17 58 7 63 4 74 C15 75 25 72 30 64 Z"/>
+    <path d="M30 88 C43 81 53 86 55 97 C44 98 34 96 30 88 Z"/>
+    <path d="M30 112 C19 107 10 111 8 121 C18 123 27 120 30 112 Z"/>
+  </svg>';
+}
+
+/**
+ * Silueta de Bogotá (cerros + skyline) para la sección "Hecho en Bogotá".
+ */
+function tinta_brava_bogota_skyline_svg() {
+  return '<svg viewBox="0 0 800 220" fill="currentColor" aria-hidden="true" preserveAspectRatio="xMidYMax meet">
+    <polygon points="0,150 60,95 130,140 210,70 300,130 380,90 460,135 540,80 620,132 700,100 800,145 800,220 0,220" opacity="0.55"/>
+    <rect x="40" y="150" width="34" height="60"/>
+    <rect x="90" y="130" width="26" height="80"/>
+    <rect x="130" y="160" width="30" height="50"/>
+    <rect x="175" y="120" width="22" height="90"/>
+    <rect x="210" y="145" width="36" height="65"/>
+    <rect x="260" y="100" width="24" height="110"/>
+    <polygon points="272,100 260,100 260,90 284,90 284,100" />
+    <rect x="298" y="150" width="28" height="60"/>
+    <rect x="336" y="125" width="20" height="85"/>
+    <rect x="368" y="155" width="34" height="55"/>
+    <rect x="415" y="135" width="24" height="75"/>
+    <rect x="450" y="90" width="26" height="120"/>
+    <rect x="461" y="78" width="4" height="14"/>
+    <rect x="490" y="150" width="30" height="60"/>
+    <rect x="530" y="118" width="22" height="92"/>
+    <rect x="562" y="145" width="34" height="65"/>
+    <rect x="608" y="128" width="24" height="82"/>
+    <rect x="642" y="160" width="30" height="50"/>
+    <rect x="682" y="110" width="22" height="100"/>
+    <rect x="714" y="150" width="30" height="60"/>
+    <rect x="752" y="130" width="26" height="80"/>
+  </svg>';
+}
+
+/**
+ * Sello circular "Hecho en Bogotá" estilo timbre de caucho.
+ */
+function tinta_brava_bogota_stamp_svg() {
+  return '<svg viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true">
+    <circle cx="70" cy="70" r="62" stroke-width="3"/>
+    <circle cx="70" cy="70" r="52" stroke-width="1.5" stroke-dasharray="2 4"/>
+    <path id="tb-stamp-arc-top" d="M 20 70 A 50 50 0 0 1 120 70" fill="none" stroke="none"/>
+    <path id="tb-stamp-arc-bottom" d="M 28 96 A 42 42 0 0 0 112 96" fill="none" stroke="none"/>
+    <text font-size="13" font-weight="700" letter-spacing="3" fill="currentColor" stroke="none">
+      <textPath href="#tb-stamp-arc-top" startOffset="50%" text-anchor="middle">BOGOTÁ</textPath>
+    </text>
+    <text font-size="10" font-weight="600" letter-spacing="2" fill="currentColor" stroke="none">
+      <textPath href="#tb-stamp-arc-bottom" startOffset="50%" text-anchor="middle">COLOMBIA</textPath>
+    </text>
+    <g stroke-width="3" stroke-linecap="round">
+      <line x1="70" y1="50" x2="70" y2="80"/>
+      <line x1="58" y1="62" x2="82" y2="62"/>
+      <line x1="62" y1="80" x2="62" y2="90"/>
+      <line x1="78" y1="80" x2="78" y2="90"/>
+      <line x1="58" y1="90" x2="82" y2="90"/>
+    </g>
+  </svg>';
+}
+

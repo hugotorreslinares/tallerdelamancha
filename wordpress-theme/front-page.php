@@ -14,13 +14,23 @@ $image2 = wp_get_attachment_image_url(
     get_theme_mod( 'tinta_brava_hero_image_2' ),
     'medium'
 );
+
+// La última frase (tras la última coma) se muestra en cursiva de acento.
+$hero_title = get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' );
+$comma_pos  = strrpos( $hero_title, ',' );
+if ( false !== $comma_pos ) {
+  $hero_title_html = esc_html( substr( $hero_title, 0, $comma_pos + 1 ) )
+    . ' <span class="accent-italic">' . esc_html( trim( substr( $hero_title, $comma_pos + 1 ) ) ) . '</span>';
+} else {
+  $hero_title_html = esc_html( $hero_title );
+}
 ?>
 
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
       <p class="eyebrow"><?php esc_html_e( 'Kits de iniciación · Bogotá', 'tinta-brava' ); ?></p>
-      <h1 class="display"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' ) ); ?></h1>
+      <h1 class="display"><?php echo $hero_title_html; ?></h1>
       <p class="lead"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_lead', 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto. Diseñados y armados en taller, con materiales que de verdad se usan.' ) ); ?></p>
       <div class="hero-actions">
        <a class="btn btn-primary"
@@ -72,19 +82,15 @@ $image2 = wp_get_attachment_image_url(
     if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) :
       $numcategories = 'grid-' . ( count( $categories ) > 4 ? 2 : count( $categories ) );
     ?>
-    <div class="grid <?php echo esc_attr( $numcategories ); ?>">
+    <div class="grid <?php echo esc_attr( $numcategories ); ?> category-grid">
       <?php
-        foreach ( $categories as $category ) {
-          $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
-          $image        = wp_get_attachment_image_url( $thumbnail_id, 'tinta-brava-card' );
+        foreach ( $categories as $i => $category ) {
+          $accent = tinta_brava_category_accent( $i );
       ?>
-      <a class="card category" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
-        <div class="card-img cat-lino"> <img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $category->name ); ?>"></div>
-        <div class="card-body">
-          <h3><?php echo esc_html( $category->name ); ?></h3>
-          <p><?php echo esc_html( $category->description ); ?></p>
-          <span class="card-link"><?php esc_html_e( 'Ver kit →', 'tinta-brava' ); ?></span>
-        </div>
+      <a class="category-block category-block--<?php echo esc_attr( $accent ); ?>" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
+        <span class="category-icon"><?php echo tinta_brava_category_icon_svg( $category->slug ); ?></span>
+        <span class="category-name"><?php echo esc_html( $category->name ); ?></span>
+        <span class="category-arrow" aria-hidden="true">→</span>
       </a>
     <?php } ?>
     </div>
@@ -122,6 +128,7 @@ $image2 = wp_get_attachment_image_url(
         <?php if ( has_post_thumbnail() ) : the_post_thumbnail( 'large' ); endif; ?>
       </div>
       <div class="featured-copy">
+        <span class="featured-leaf"><?php echo tinta_brava_leaf_branch_svg(); ?></span>
         <p class="eyebrow"><?php esc_html_e( 'Destacado', 'tinta-brava' ); ?></p>
         <h2><?php the_title(); ?></h2>
         <p class="lead"><?php echo esc_html( $short_desc ); ?></p>
@@ -168,6 +175,18 @@ $image2 = wp_get_attachment_image_url(
         <p><?php esc_html_e( 'En Bogotá hay un circuito enorme de ferias de diseño. Vas a encontrar tu gente.', 'tinta-brava' ); ?></p>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="section made-in-bogota">
+  <div class="container made-in-bogota-grid">
+    <div class="made-in-bogota-skyline" aria-hidden="true"><?php echo tinta_brava_bogota_skyline_svg(); ?></div>
+    <div class="made-in-bogota-copy">
+      <p class="eyebrow"><?php esc_html_e( 'Hecho con tinta y paciencia', 'tinta-brava' ); ?></p>
+      <h2 class="display made-in-bogota-title"><?php esc_html_e( 'Hecho', 'tinta-brava' ); ?> <span class="accent-italic"><?php esc_html_e( 'en Bogotá', 'tinta-brava' ); ?></span></h2>
+      <p class="lead"><?php esc_html_e( 'Somos un taller independiente que cree en el poder del dibujo, la impresión y el trabajo manual.', 'tinta-brava' ); ?></p>
+    </div>
+    <div class="made-in-bogota-stamp" aria-hidden="true"><?php echo tinta_brava_bogota_stamp_svg(); ?></div>
   </div>
 </section>
 <?php
@@ -282,7 +301,7 @@ endif;
     <h2><?php esc_html_e( '¿Listo para empezar?', 'tinta-brava' ); ?></h2>
     <p><?php esc_html_e( 'Escríbenos por WhatsApp, te contamos qué kit te conviene según tu experiencia y lo separamos para la próxima feria o te lo enviamos a casa.', 'tinta-brava' ); ?></p>
     <div class="hero-actions">
-      <a class="btn btn-primary btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, quiero empezar con Tinta Brava' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Hablar por WhatsApp', 'tinta-brava' ); ?></a>
+      <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, quiero empezar con Tinta Brava' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Hablar por WhatsApp', 'tinta-brava' ); ?></a>
       <a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/kits/' ) ); ?>"><?php esc_html_e( 'Ver los kits primero', 'tinta-brava' ); ?></a>
     </div>
   </div>

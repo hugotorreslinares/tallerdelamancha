@@ -104,7 +104,7 @@ get_header();
       <div class="cta-inner">
         <h2><?php esc_html_e( '¿Quieres que vayamos a tu feria?', 'tinta-brava' ); ?></h2>
         <p><?php esc_html_e( 'Si organizas una feria de diseño, ilustración o arte en Bogotá y crees que encajamos, escríbenos. Llevamos el taller a donde nos necesiten.', 'tinta-brava' ); ?></p>
-        <a class="btn btn-primary btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, organizo una feria y me gustaría que Tinta Brava estuviera' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Invitarnos a una feria', 'tinta-brava' ); ?></a>
+        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, organizo una feria y me gustaría que Tinta Brava estuviera' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Invitarnos a una feria', 'tinta-brava' ); ?></a>
       </div>
     </div>
   </div>
