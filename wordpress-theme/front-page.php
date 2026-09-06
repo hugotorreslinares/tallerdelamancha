@@ -15,6 +15,8 @@ $image2 = wp_get_attachment_image_url(
     'medium'
 );
 
+$hero_frame_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_hero_frame_image' ), 'medium' );
+
 // La última frase (tras la última coma) se muestra en cursiva de acento.
 $hero_title = get_theme_mod( 'tinta_brava_hero_title', 'Empieza a estampar en casa, una tirada a la vez.' );
 $comma_pos  = strrpos( $hero_title, ',' );
@@ -48,7 +50,11 @@ if ( false !== $comma_pos ) {
         <li><strong><?php esc_html_e( 'Envíos', 'tinta-brava' ); ?></strong> <?php esc_html_e( 'a toda Colombia', 'tinta-brava' ); ?></li>
       </ul>
     </div>
-    <div class="hero-media" aria-hidden="true">
+    <div
+      class="hero-media<?php echo $hero_frame_image ? ' hero-media--framed' : ''; ?>"
+      aria-hidden="true"
+      <?php if ( $hero_frame_image ) : ?>style="--hero-frame-image: url('<?php echo esc_url( $hero_frame_image ); ?>')"<?php endif; ?>
+    >
       <div
     class="hero-photo hero-photo-1"
     <?php if ( $image1 ) : ?>
@@ -120,6 +126,7 @@ if ( false !== $comma_pos ) {
       $price = $product ? $product->get_price() : '';
       $short_desc = $product ? wp_strip_all_tags( $product->get_short_description() ) : get_the_excerpt();
       $wa_msg = 'Hola, me interesa el ' . get_the_title();
+      $featured_leaf_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_featured_leaf_image' ), 'medium' );
 ?>
 <section class="section section-featured">
   <div class="container">
@@ -128,7 +135,13 @@ if ( false !== $comma_pos ) {
         <?php if ( has_post_thumbnail() ) : the_post_thumbnail( 'large' ); endif; ?>
       </div>
       <div class="featured-copy">
-        <span class="featured-leaf"><?php echo tinta_brava_leaf_branch_svg(); ?></span>
+        <span class="featured-leaf">
+          <?php if ( $featured_leaf_image ) : ?>
+            <img src="<?php echo esc_url( $featured_leaf_image ); ?>" alt="" />
+          <?php else : ?>
+            <?php echo tinta_brava_leaf_branch_svg(); ?>
+          <?php endif; ?>
+        </span>
         <p class="eyebrow"><?php esc_html_e( 'Destacado', 'tinta-brava' ); ?></p>
         <h2><?php the_title(); ?></h2>
         <p class="lead"><?php echo esc_html( $short_desc ); ?></p>
@@ -178,7 +191,10 @@ if ( false !== $comma_pos ) {
   </div>
 </section>
 
-<?php $bogota_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_bogota_image' ), 'large' ); ?>
+<?php
+$bogota_image       = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_bogota_image' ), 'large' );
+$bogota_stamp_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_bogota_stamp_image' ), 'medium' );
+?>
 <section class="section made-in-bogota">
   <div class="container made-in-bogota-grid">
     <?php if ( $bogota_image ) : ?>
@@ -191,7 +207,13 @@ if ( false !== $comma_pos ) {
       <h2 class="display made-in-bogota-title"><?php esc_html_e( 'Hecho', 'tinta-brava' ); ?> <span class="accent-italic"><?php esc_html_e( 'en Bogotá', 'tinta-brava' ); ?></span></h2>
       <p class="lead"><?php esc_html_e( 'Somos un taller independiente que cree en el poder del dibujo, la impresión y el trabajo manual.', 'tinta-brava' ); ?></p>
     </div>
-    <div class="made-in-bogota-stamp" aria-hidden="true"><?php echo tinta_brava_bogota_stamp_svg(); ?></div>
+    <div class="made-in-bogota-stamp" aria-hidden="true">
+      <?php if ( $bogota_stamp_image ) : ?>
+        <img src="<?php echo esc_url( $bogota_stamp_image ); ?>" alt="" />
+      <?php else : ?>
+        <?php echo tinta_brava_bogota_stamp_svg(); ?>
+      <?php endif; ?>
+    </div>
   </div>
 </section>
 <?php

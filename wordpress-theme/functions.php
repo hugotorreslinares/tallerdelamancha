@@ -286,6 +286,82 @@ function tinta_brava_customize_register( $wp_customize ) {
       )
     )
   );
+
+  // Sello de Bogotá (imagen, reemplaza el SVG del sello)
+  $wp_customize->add_setting(
+    'tinta_brava_bogota_stamp_image',
+    array(
+      'sanitize_callback' => 'absint',
+    )
+  );
+
+  $wp_customize->add_control(
+    new WP_Customize_Media_Control(
+      $wp_customize,
+      'tinta_brava_bogota_stamp_image',
+      array(
+        'label'       => __( 'Sello de Bogotá', 'tinta-brava' ),
+        'description' => __( 'Opcional. Reemplaza el sello circular dibujado junto al texto.', 'tinta-brava' ),
+        'section'     => 'tinta_brava_bogota',
+        'mime_type'   => 'image',
+      )
+    )
+  );
+
+  /**
+   * Marco del hero — imagen opcional detrás de la foto principal
+   * (reemplaza el fondo de "papel rasgado" en terracota).
+   */
+  $wp_customize->add_setting(
+    'tinta_brava_hero_frame_image',
+    array(
+      'sanitize_callback' => 'absint',
+    )
+  );
+
+  $wp_customize->add_control(
+    new WP_Customize_Media_Control(
+      $wp_customize,
+      'tinta_brava_hero_frame_image',
+      array(
+        'label'       => __( 'Marco detrás de la foto del hero', 'tinta-brava' ),
+        'description' => __( 'Opcional. Reemplaza el fondo de "papel rasgado" en terracota que asoma detrás de la foto principal.', 'tinta-brava' ),
+        'section'     => 'tinta_brava_home',
+        'mime_type'   => 'image',
+      )
+    )
+  );
+
+  /**
+   * Sección "Producto destacado" — ilustración junto al texto
+   */
+  $wp_customize->add_section(
+    'tinta_brava_featured',
+    array(
+      'title'    => __( 'Producto destacado', 'tinta-brava' ),
+      'priority' => 32,
+    )
+  );
+
+  $wp_customize->add_setting(
+    'tinta_brava_featured_leaf_image',
+    array(
+      'sanitize_callback' => 'absint',
+    )
+  );
+
+  $wp_customize->add_control(
+    new WP_Customize_Media_Control(
+      $wp_customize,
+      'tinta_brava_featured_leaf_image',
+      array(
+        'label'       => __( 'Ilustración junto al texto', 'tinta-brava' ),
+        'description' => __( 'Opcional. Reemplaza el dibujo de rama junto al título de "Destacado".', 'tinta-brava' ),
+        'section'     => 'tinta_brava_featured',
+        'mime_type'   => 'image',
+      )
+    )
+  );
 }
 add_action( 'customize_register', 'tinta_brava_customize_register' );
 
