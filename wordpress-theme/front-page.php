@@ -31,7 +31,6 @@ if ( false !== $comma_pos ) {
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><?php esc_html_e( 'Kits de iniciación · Bogotá', 'tinta-brava' ); ?></p>
       <h1 class="display"><?php echo $hero_title_html; ?></h1>
       <p class="lead"><?php echo esc_html( get_theme_mod( 'tinta_brava_hero_lead', 'Kits de linograbado, serigrafía y litografía con todo lo que necesitas para aprender la técnica y terminar tu primer proyecto. Diseñados y armados en taller, con materiales que de verdad se usan.' ) ); ?></p>
       <div class="hero-actions">
@@ -44,11 +43,6 @@ if ( false !== $comma_pos ) {
    href="<?php echo esc_url( get_theme_mod( 'tinta_brava_hero_button_2_url', home_url( '/tutoriales/' ) ) ); ?>">
     <?php echo esc_html( get_theme_mod( 'tinta_brava_hero_button_2_text', 'Aprende primero' ) ); ?>
 </a>      </div>
-      <ul class="hero-meta" role="list">
-        <li><strong>+50</strong> <?php esc_html_e( 'estudiantes han estampado con nosotros', 'tinta-brava' ); ?></li>
-        <li><strong>3</strong> <?php esc_html_e( 'técnicas en un solo catálogo', 'tinta-brava' ); ?></li>
-        <li><strong><?php esc_html_e( 'Envíos', 'tinta-brava' ); ?></strong> <?php esc_html_e( 'a toda Colombia', 'tinta-brava' ); ?></li>
-      </ul>
     </div>
     <div
       class="hero-media<?php echo $hero_frame_image ? ' hero-media--framed' : ''; ?>"
