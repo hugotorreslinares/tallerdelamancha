@@ -255,6 +255,37 @@ function tinta_brava_customize_register( $wp_customize ) {
       )
     )
   );
+
+  /**
+   * Sección "Hecho en Bogotá" — foto opcional en vez del dibujo del skyline
+   */
+  $wp_customize->add_section(
+    'tinta_brava_bogota',
+    array(
+      'title'    => __( 'Hecho en Bogotá', 'tinta-brava' ),
+      'priority' => 31,
+    )
+  );
+
+  $wp_customize->add_setting(
+    'tinta_brava_bogota_image',
+    array(
+      'sanitize_callback' => 'absint',
+    )
+  );
+
+  $wp_customize->add_control(
+    new WP_Customize_Media_Control(
+      $wp_customize,
+      'tinta_brava_bogota_image',
+      array(
+        'label'       => __( 'Foto de Bogotá', 'tinta-brava' ),
+        'description' => __( 'Opcional. Si subís una foto, reemplaza el dibujo del skyline en la sección "Hecho en Bogotá".', 'tinta-brava' ),
+        'section'     => 'tinta_brava_bogota',
+        'mime_type'   => 'image',
+      )
+    )
+  );
 }
 add_action( 'customize_register', 'tinta_brava_customize_register' );
 

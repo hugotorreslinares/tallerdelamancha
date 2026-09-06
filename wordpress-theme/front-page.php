@@ -178,9 +178,14 @@ if ( false !== $comma_pos ) {
   </div>
 </section>
 
+<?php $bogota_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_bogota_image' ), 'large' ); ?>
 <section class="section made-in-bogota">
   <div class="container made-in-bogota-grid">
+    <?php if ( $bogota_image ) : ?>
+    <div class="made-in-bogota-photo" aria-hidden="true"><img src="<?php echo esc_url( $bogota_image ); ?>" alt="" /></div>
+    <?php else : ?>
     <div class="made-in-bogota-skyline" aria-hidden="true"><?php echo tinta_brava_bogota_skyline_svg(); ?></div>
+    <?php endif; ?>
     <div class="made-in-bogota-copy">
       <p class="eyebrow"><?php esc_html_e( 'Hecho con tinta y paciencia', 'tinta-brava' ); ?></p>
       <h2 class="display made-in-bogota-title"><?php esc_html_e( 'Hecho', 'tinta-brava' ); ?> <span class="accent-italic"><?php esc_html_e( 'en Bogotá', 'tinta-brava' ); ?></span></h2>
