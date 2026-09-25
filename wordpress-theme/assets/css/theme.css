@@ -614,15 +614,17 @@ a:hover { color: var(--color-ochre); }
   background: var(--hero-frame-image) center / cover no-repeat;
   clip-path: none;
 }
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
 .hero-photo {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background-color: var(--color-ochre-soft);
-  background-size: cover;
-  box-shadow: var(--shadow-lg);
-  background-position: center;
-  background-repeat: no-repeat !important;
+
 }
 .hero-photo-1 {
   inset: 0;
