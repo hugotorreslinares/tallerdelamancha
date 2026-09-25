@@ -60,13 +60,6 @@
 }
 .hero-photo {
   position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-color: var(--color-ochre-soft);
-  background-size: cover;
-  box-shadow: var(--shadow-lg);
-  background-position: center;
-  background-repeat: no-repeat !important;
 }
 .hero-photo-1 {
   inset: 0;
@@ -74,16 +67,7 @@
 }
 .hero-photo-2 {
   width: 60%;
-  aspect-ratio: 1;
-  bottom: -5%;
-  right: -8%;
-   /* background: var(--color-paper); */
-  border: 8px solid var(--color-paper);
-  display: none;
-  place-items: center;
-  font-family: var(--font-serif);
-  font-size: 4rem;
-  color: var(--color-ink);
+
 }
 .hero-stamp {
   position: absolute;
