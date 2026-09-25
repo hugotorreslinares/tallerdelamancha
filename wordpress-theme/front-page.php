@@ -51,15 +51,15 @@ if ( false !== $comma_pos ) {
     >
       <div
     class="hero-photo hero-photo-1"
-    <?php if ( $image1 ) : ?>
-        style="background-image:url('<?php echo esc_url( $image1 ); ?>')"
+        <?php if ( $image1 ) : ?>
+       <img src="<?php echo esc_url( $image1 ); ?>" alt="">
     <?php endif; ?>
 ></div>
 
 <div
     class="hero-photo hero-photo-2"
     <?php if ( $image2 ) : ?>
-        style="background-image:url('<?php echo esc_url( $image2 ); ?>')"
+        <img src="<?php echo esc_url( $image2 ); ?>" alt="">
     <?php endif; ?>
 ></div>
       <div class="hero-stamp">★ <?php esc_html_e( 'Disponibilidad limitada', 'tinta-brava' ); ?></div>
