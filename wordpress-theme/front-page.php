@@ -78,6 +78,9 @@ if ( false !== $comma_pos ) {
       'taxonomy'   => 'product_cat',
       'hide_empty' => true,
     ) );
+    if ( ! is_wp_error( $categories ) ) {
+      $categories = array_values( array_filter( $categories, function ( $c ) { return 'insumos' !== $c->slug; } ) );
+    }
     if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) :
       $numcategories = 'grid-' . ( count( $categories ) > 4 ? 2 : count( $categories ) );
     ?>
@@ -100,6 +103,7 @@ if ( false !== $comma_pos ) {
 <?php
   $featured = new WP_Query( array(
     'post_type'      => 'product',
+    'tax_query'      => tinta_brava_exclude_supplies_tax_query(),
     'posts_per_page' => 1,
     'meta_key'       => 'total_sales',
     'orderby'        => 'meta_value_num',
@@ -108,6 +112,7 @@ if ( false !== $comma_pos ) {
   if ( ! $featured->have_posts() ) {
     $featured = new WP_Query( array(
       'post_type'      => 'product',
+      'tax_query'      => tinta_brava_exclude_supplies_tax_query(),
       'posts_per_page' => 1,
       'orderby'        => 'date',
       'order'          => 'DESC',

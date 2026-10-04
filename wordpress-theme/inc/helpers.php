@@ -242,3 +242,17 @@ function tinta_brava_bogota_stamp_svg() {
   </svg>';
 }
 
+/**
+ * tax_query que excluye la categoría "insumos" (productos sueltos bajo pedido)
+ * de portada y catálogo de kits.
+ */
+function tinta_brava_exclude_supplies_tax_query() {
+  return array(
+    array(
+      'taxonomy' => 'product_cat',
+      'field'    => 'slug',
+      'terms'    => 'insumos',
+      'operator' => 'NOT IN',
+    ),
+  );
+}

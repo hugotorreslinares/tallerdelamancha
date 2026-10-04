@@ -21,6 +21,7 @@ get_header();
       <?php
       $products = new WP_Query( array(
         'post_type'      => 'product',
+        'tax_query'      => tinta_brava_exclude_supplies_tax_query(),
         'posts_per_page' => 12,
         'orderby'        => 'menu_order date',
         'order'          => 'ASC',
