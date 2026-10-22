@@ -1,78 +1,104 @@
-# TODO — Diseño (auditoría vs. STYLEGUIDE.md)
+# Plan — estilos y pendientes (auditoría 2026-10-22)
 
-Estado: `[ ]` pendiente · `[x]` resuelto
+Estado: `[ ]` pendiente · `[x]` resuelto. Referencia: [STYLEGUIDE.md](STYLEGUIDE.md).
 
-Referencia: [STYLEGUIDE.md](STYLEGUIDE.md). Cada fix abajo cita la regla que viola.
+Auditoría hecha en producción (claro, oscuro, móvil 375px) más lectura del CSS/PHP. Sin desbordes horizontales, sin imágenes sin `alt`, un solo `h1` por página, modo oscuro correcto en general.
 
----
-
-## Alta prioridad (bugs reales de UX)
-
-### [x] 1. Links del menú no dan feedback en hover
-- **Archivo:** `assets/css/base.css:136`
-- **Bug:** `.primary-nav a:hover { color: var(--color-ink); }` — mismo color que el estado normal. La regla global (`a:hover` → ochre) queda anulada. El menú principal no muestra ningún cambio visual al pasar el mouse.
-- **Fix:** cambiar a `color: var(--color-ochre)` (o quitar la regla y dejar que herede la global).
-
-### [ ] 2. Header se vuelve MÁS transparente al hacer scroll
-- **Archivo:** `assets/css/base.css:286-291`
-- **Bug:** `.site-header` normal usa `color-mix(in srgb, var(--color-paper) 92%, transparent)`. Al scrollear, `.is-scrolled` baja a `color-mix(in srgb, var(--color-paper-2) 24%, transparent)` — pasa de 92% opaco a 24% opaco justo cuando hay contenido debajo para tapar. Se ve el texto de la página atravesando el header.
-- **Fix:** subir el % de opacidad en `.is-scrolled` (ej. 90-95%), no bajarlo.
-
-### [x] 3. "Sobre el taller" no tiene plantilla propia — CSS muerto
-- **Fix aplicado:** `templates/sobre-el-taller.php` — usa `.about-hero` (título + extracto), `.about-grid` (foto destacada de la página + `the_content()`) y `.values`/`.value-item` (3 valores fijos, copy nueva).
-- **Pendiente de tu lado:** en wp-admin, editar la página "Sobre el taller" → Atributos de página → Plantilla → elegir "Sobre el taller". Si la página tiene imagen destacada, se usa como foto; si no, queda el degradado decorativo existente.
-
-### [ ] 4. Contacto: estilos inline en vez de clases/tokens
-- **Archivo:** `templates/contacto.php`
-- **Bug:** 3 círculos de ícono (WhatsApp/Instagram/Correo) repiten el mismo `style="width:40px;height:40px;border-radius:50%;..."` a mano — mismo patrón, cero clase reutilizable. El cuadro de "¡Gracias!" (`.callout`) es 100% inline, sin clase — no tiene variante para modo oscuro y no sigue la escala de espaciado (`padding: 1rem 1.5rem` en vez de `--space-4 --space-5`).
-- **Fix:** extraer `.contact-icon` y `.callout` a `components.css`, documentarlas en STYLEGUIDE §5.
+Ya resuelto de la lista anterior: hover del menú, plantilla "Sobre el taller", paleta nueva, botones `.btn-primary`/`.btn-whatsapp`, `/tutoriales/`, página Insumos, estilos de carrito/checkout.
 
 ---
 
-## Media prioridad (consistencia de tokens)
+## P0 — rompe algo visible o funcional
 
-### [ ] 5. Color `rgba(244,239,230,X)` hardcodeado en vez de token
-- **Archivos:** `base.css` (footer-tag, footer-links, footer-bottom, footer-legal — 6 veces), `pages.css` (`.about-hero .lead`, `.feature p`)
-- **Problema:** es `--color-fixed-light` con opacidad, escrito a mano cada vez. Viola regla 1 de STYLEGUIDE ("todo color sale de un token").
-- **Fix:** agregar `--color-fixed-light-muted` (o usar `color-mix(in srgb, var(--color-fixed-light) 80%, transparent)`) como token único.
+### [ ] 1. Texto fantasma sobre las fotos de producto
+`.gallery-main::after { content: 'Kit Linograbado' }` (pages.css) se dibuja encima de la foto de **todos** los productos, con opacidad .4. Mismo patrón: `.fair-photo::after 'BADA'`, `.about-photo::after 'Atelier'`.
+**Fix:** borrar esos `::after` (eran placeholders de maqueta). Esfuerzo: 10 min.
 
-### [ ] 6. Tamaños de fuente decorativos fuera de la escala `--fs-*`
-- **Archivo:** `assets/css/pages.css`
-- **Casos:** `4rem` (`.hero-photo-2`), `6rem` (`.fair-photo::after`), `3rem` (`.value-num`, `.fair-date .day`), `2.5rem` (`.about-photo::after`), `2rem` (`.gallery-main::after`), `1.2rem` (`.kit-includes::before`)
-- **Fix:** son decorativos/grandes, no necesitan encajar en `--fs-*` textual — pero si se van a usar en más de un lugar, agregar un token `--fs-display-sm` o similar en vez de repetir valores sueltos.
+### [ ] 2. La prosa no tiene estilos
+Dentro de `.post-content`/`.post-body` los `p`, `h2`, `h3` tienen `margin: 0` (el reset), así que las entradas del blog, "Sobre el taller" y páginas legales salen con títulos pegados al texto y sin aire entre párrafos. Tampoco hay estilo de `ul/ol`, `blockquote`, `img`, `a`.
+**Fix:** bloque "prosa" en pages.css (márgenes por `--space-*`, listas, citas, imágenes a 100%, enlaces subrayados). Esfuerzo: 1 h. Es el arreglo de mayor impacto para el blog.
 
-### [ ] 7. `letter-spacing` sin escala — 4 valores distintos sin patrón
-- **Archivo:** varios (`components.css` badge `0.08em`, `pages.css` price-label `0.1em`, `base.css` eyebrow/footer h4 `0.12em`, `pages.css` fair-date month `0.15em`)
-- **Fix:** definir 2-3 tokens (`--ls-tight`, `--ls-wide`) y mapear los usos existentes.
+### [ ] 3. No existe `404.php`
+Una URL inexistente cae en `index.php` y muestra "Tutoriales — Aún no hay tutoriales publicados".
+**Fix:** `404.php` con mensaje, buscador y enlaces a Kits/Tutoriales. Esfuerzo: 30 min.
 
-### [ ] 8. CSS muerto: `.hero-photo-2`
-- **Archivo:** `assets/css/pages.css:62-74`, usado en `front-page.php:50`
-- **Problema:** la regla tiene `display: none` — el bloque nunca se muestra. Es un remanente de una versión anterior del hero (foto secundaria superpuesta).
-- **Fix:** confirmar con el usuario si se retoma esa idea (foto secundaria) o se borra el markup + CSS.
+### [ ] 4. `theme.css` está desfasado de sus fuentes (57 líneas) y hay trabajo sin commitear
+Hay reglas que solo existen en el bundle (`.post-content-page/-single`, `.post-hero`, `.author-box`, `.related-*`, `.hero-photo img`), y `page.php`/`single.php`/`theme.css` modificados sin commit (otra sesión). Si alguien regenera el bundle con `cat`, esas reglas desaparecen.
+**Fix:** pasar esas reglas a `pages.css`, commitear el trabajo de `page.php`/`single.php`, regenerar el bundle y comprobar con `diff`. Esfuerzo: 30 min. **Hacerlo antes que cualquier otro cambio de CSS.**
 
-### [ ] 9. `.is-scrolled` usa `px` sueltos en vez de `--space-*`
-- **Archivo:** `assets/css/base.css:288-289`
-- **Fix:** `padding-top: 20px` → el valor más cercano en la escala es `--space-5` (24px) o `--space-4` (16px), definir cuál.
+### [ ] 5. Header más transparente al hacer scroll
+`.site-header.is-scrolled` baja el fondo al 24 % de opacidad justo cuando hay contenido debajo. Además usa `20px/15px` sueltos.
+**Fix:** subir a ~92 % y usar `--space-*`. Esfuerzo: 5 min.
 
----
-
-## Baja prioridad / limpieza de la guía
-
-### [ ] 10. STYLEGUIDE.md dice `--fs-2xl` sin uso — es falso
-- **Archivo:** `STYLEGUIDE.md:68` y `:141`
-- `--fs-2xl` sí se usa en `.price` (`pages.css:153`). Solo `--fs-4xl` está realmente sin uso. Corregir la guía.
-
-### [ ] 11. `.product-gallery { top: 100px }` hardcodeado
-- **Archivo:** `assets/css/pages.css:274`
-- El header mide `72px` (`--header-h` no existe como token). Si cambia la altura del header, este sticky se desalinea.
-- **Fix:** agregar `--header-h: 72px` en `tokens.css`, usarlo en `.site-header`-relacionados y en este `top`.
+### [ ] 6. Checkout: revisar la parte baja con estilos
+Resumen del pedido, envío y botón de pago solo se verificaron por DOM, no visualmente (el interruptor se apagó durante la revisión). Ver sección "Tienda" abajo.
 
 ---
 
-## Orden sugerido de ejecución
+## P1 — consistencia visual y de marca
 
-1 y 2 primero (bugs visibles, arreglo rápido, cero riesgo).
-4 y 5 juntos (mismo trabajo: extraer componentes + token de color).
-3 es la de más esfuerzo (nueva plantilla) — confirmar antes si "Sobre el taller" vale la pena rediseñar o se deja simple a propósito.
-6-9 son pulido, se pueden agrupar en un solo commit.
-10-11 triviales.
+### [ ] 7. Bloque raro detrás del texto del hero
+Los `radial-gradient` de `.hero` siguen con `rgba(115,135,123)` y `rgba(131,151,136)` (verdes grisáceos de la paleta pastel anterior). Se nota como un panel más claro detrás del texto, en claro y en oscuro.
+**Fix:** quitarlos o usar terracota/navy al 5–8 %. 5 min.
+
+### [ ] 8. Íconos de categoría débiles
+Los SVG de `.category-block` son pequeños y de línea fina dentro de bloques de ~380 px; en la referencia ocupan mucho más y son más gruesos.
+**Fix:** agrandar y engrosar, y usar la imagen de la categoría de WooCommerce (`thumbnail_id`) si existe, con el SVG como respaldo. 1 h.
+
+### [ ] 9. Rebrand "Tinta Brava" → "Taller de la mancha"
+Aún aparece en: mensajes de WhatsApp (header, portada, ferias, shortcodes), asunto del correo de contacto (`functions.php`), metabox "Detalles Tinta Brava" y el texto de la página "Sobre el taller" (se edita en wp-admin). **No renombrar** carpeta, `Theme Name` ni text-domain (rompería traducciones y la instalación). 30 min.
+
+### [ ] 10. "Sobre el taller"
+Rectángulo oscuro enorme a la izquierda (no hay imagen destacada en la página) y el `h1` pegado al párrafo del hero.
+**Tuyo:** subir imagen destacada a la página. **Código:** margen del `h1` del hero. 10 min.
+
+### [ ] 11. 33 estilos inline en 10 archivos PHP
+`contacto.php` (8), `single-product.php` (6), `functions.php` (6), `catalogo-kits.php` (3), `archive-fair.php` (3), etc. `.callout` no tiene CSS. Lo hace imposible de cambiar desde la guía.
+**Fix:** pasar a clases (`.contact-icon`, `.callout`, `.cta-row`…). 1,5 h.
+
+### [ ] 12. Colores y valores sueltos
+`rgba(241,232,214,x)` ×7 (footer, `.feature p`, `.about-hero .lead`) → token `--color-fixed-light-muted` o `color-mix`. `rgba(26,26,26)` en foco de formularios. Letter-spacing con 4 valores sin escala. `top:100px` del sticky de la galería ligado a la altura del header. 45 min.
+
+### [ ] 13. Placeholders sin contenido real
+`/ferias/` muestra un bloque gris-azul vacío (`.fair-map`). Decidir: mapa real, imagen o quitarlo.
+
+---
+
+## P2 — accesibilidad, móvil y limpieza
+
+### [ ] 14. Objetivos táctiles pequeños en móvil
+Enlaces del footer de ~17 px de alto, botón de tema de 36 px. Mínimo 44 px.
+
+### [ ] 15. Footer en móvil
+La marca queda apretada en 2 columnas ("Taller de / la"). Pasarla a ancho completo sobre las columnas de enlaces.
+
+### [ ] 16. Contraste del eyebrow en oscuro
+Terracota sobre fondo oscuro ≈ 3,6:1. Aclarar el acento en el tema oscuro para llegar a 4,5:1.
+
+### [ ] 17. CSS muerto y tokens sin uso
+`.hero-photo-2` (`display:none`), `.category .card-img`, `--fs-4xl`.
+
+### [ ] 18. STYLEGUIDE.md desactualizado
+Falta: bundle + `woocommerce.css` aparte, `--fs-2xl` sí se usa (en `.price`), plantillas Tutoriales/Insumos/404, regla "nada de texto en `::after`".
+
+---
+
+## Tienda en línea (no es estilo, pero queda pendiente)
+
+- [ ] Reactivar Personalizar → Tienda → "Activar compra en línea" (está **apagado**).
+- [ ] Registrar la URL de eventos `https://tallerdelamancha.com/?wc-api=wc_wompi` en el panel de Wompi (Sandbox).
+- [ ] Compra de prueba: dentro de la zona (envío $0) y fuera (envío $15.000), con tarjeta sandbox.
+- [ ] Confirmar que el pedido pasa a "Procesando" (si queda "Pendiente", falta la URL de eventos).
+- [ ] Producción: llaves reales, desmarcar modo de prueba, URL de eventos en Producción.
+- [ ] Insumos: faltan precios (costo × 1,35) en los borradores 200–207; publicar la página Insumos (id 209) y añadirla al menú.
+
+---
+
+## Orden sugerido
+
+1. **Base** (ítems 4, 1, 5, 7): consolidar el bundle y quitar lo que ensucia. ~1 h.
+2. **Contenido** (ítems 2, 3, 10): prosa, 404, "Sobre el taller". ~2 h.
+3. **Marca** (ítems 9, 8): rebrand y categorías. ~1,5 h.
+4. **Limpieza** (ítems 11, 12, 13, 17): inline y tokens. ~3 h.
+5. **Móvil y accesibilidad** (ítems 14, 15, 16) y **docs** (18). ~1,5 h.
+6. **Tienda**: cuando retomes, con el checklist de arriba.
