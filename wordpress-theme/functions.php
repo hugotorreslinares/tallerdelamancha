@@ -408,6 +408,7 @@ require_once TINTA_BRAVA_DIR . '/inc/setup.php';
 if ( class_exists( 'WooCommerce' ) ) {
   require_once TINTA_BRAVA_DIR . '/inc/woocommerce/catalog-mode.php';
   require_once TINTA_BRAVA_DIR . '/inc/woocommerce/product-meta.php';
+  require_once TINTA_BRAVA_DIR . '/inc/woocommerce/delivery-zone.php';
 }
 
 /**
