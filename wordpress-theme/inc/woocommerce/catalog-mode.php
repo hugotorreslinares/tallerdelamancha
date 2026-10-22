@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Quitar botones de compra de WooCommerce
  */
+// ponytail: el botón de compra lo pinta tinta_brava_buy_button() en las plantillas, nunca el de WooCommerce.
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
@@ -45,6 +46,9 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
  * Vaciar el carrito si alguien intenta comprar y redirigir al inicio
  */
 function tinta_brava_empty_cart_redirect() {
+  if ( tinta_brava_online_checkout_enabled() ) {
+    return;
+  }
   if ( is_cart() || is_checkout() ) {
     wp_safe_redirect( home_url( '/kits/' ) );
     exit;
@@ -56,6 +60,9 @@ add_action( 'template_redirect', 'tinta_brava_empty_cart_redirect' );
  * Quitar páginas de WooCommerce del menú (cuando se activen)
  */
 function tinta_brava_remove_wc_menu_items( $items ) {
+  if ( tinta_brava_online_checkout_enabled() ) {
+    return $items;
+  }
   $to_remove = array( 'cart', 'checkout', 'my-account' );
   foreach ( $items as $key => $item ) {
     if ( in_array( $item->object, $to_remove, true ) ) {
@@ -70,6 +77,9 @@ add_filter( 'wp_nav_menu_objects', 'tinta_brava_remove_wc_menu_items', 10 );
  * Forzar que las páginas de WooCommerce no se enlacen desde ningún sitio
  */
 function tinta_brava_block_wc_pages() {
+  if ( tinta_brava_online_checkout_enabled() ) {
+    return;
+  }
   $blocked = array( 'cart', 'checkout', 'my-account' );
   if ( is_page( $blocked ) ) {
     wp_safe_redirect( home_url( '/kits/' ) );
@@ -82,9 +92,9 @@ add_action( 'template_redirect', 'tinta_brava_block_wc_pages', 5 );
  * Quitar "Añadir al carrito" via AJAX
  */
 function tinta_brava_disable_ajax_add_to_cart( $support ) {
-  return false;
+  return tinta_brava_online_checkout_enabled() ? $support : false;
 }
-add_filter( 'woocommerce_product_supports_ajax_add_to_cart', '__return_false' );
+add_filter( 'woocommerce_product_supports_ajax_add_to_cart', 'tinta_brava_disable_ajax_add_to_cart' );
 
 /**
  * Botón de WhatsApp en el loop (catálogo) — reemplaza el "Añadir al carrito"
@@ -131,6 +141,9 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'tinta_brava_loop_price', 
  * Ocultar notificación "Producto añadido al carrito"
  */
 function tinta_brava_hide_cart_notices() {
+  if ( tinta_brava_online_checkout_enabled() ) {
+    return;
+  }
   remove_action( 'woocommerce_before_shop_loop', 'wc_print_notices', 10 );
   remove_action( 'woocommerce_before_single_product', 'wc_print_notices', 10 );
   remove_action( 'woocommerce_before_cart', 'wc_print_notices', 10 );
@@ -142,6 +155,9 @@ add_action( 'init', 'tinta_brava_hide_cart_notices' );
  * Desactivar fragments de carrito (no los necesitamos sin carrito activo)
  */
 function tinta_brava_disable_cart_fragments() {
+  if ( tinta_brava_online_checkout_enabled() ) {
+    return;
+  }
   wp_dequeue_script( 'wc-cart-fragments' );
 }
 add_action( 'wp_enqueue_scripts', 'tinta_brava_disable_cart_fragments', 99 );
@@ -149,7 +165,9 @@ add_action( 'wp_enqueue_scripts', 'tinta_brava_disable_cart_fragments', 99 );
 /**
  * Quitar el botón "Pay" del order received
  */
-remove_action( 'woocommerce_thankyou', 'woocommerce_pay_order_button', 10 );
+if ( ! tinta_brava_online_checkout_enabled() ) {
+  remove_action( 'woocommerce_thankyou', 'woocommerce_pay_order_button', 10 );
+}
 
 /**
  * Quitar el review tab

@@ -362,6 +362,35 @@ function tinta_brava_customize_register( $wp_customize ) {
       )
     )
   );
+
+  /**
+   * Sección "Tienda" — interruptor de compra en línea
+   */
+  $wp_customize->add_section(
+    'tinta_brava_shop',
+    array(
+      'title'    => __( 'Tienda', 'tinta-brava' ),
+      'priority' => 33,
+    )
+  );
+
+  $wp_customize->add_setting(
+    'tinta_brava_online_checkout',
+    array(
+      'default'           => false,
+      'sanitize_callback' => 'rest_sanitize_boolean',
+    )
+  );
+
+  $wp_customize->add_control(
+    'tinta_brava_online_checkout',
+    array(
+      'type'        => 'checkbox',
+      'label'       => __( 'Activar compra en línea', 'tinta-brava' ),
+      'description' => __( 'Muestra "Comprar ahora", carrito y finalizar compra. Actívalo solo cuando tengas una pasarela de pago configurada en WooCommerce. Apagado: catálogo + pedidos por WhatsApp.', 'tinta-brava' ),
+      'section'     => 'tinta_brava_shop',
+    )
+  );
 }
 add_action( 'customize_register', 'tinta_brava_customize_register' );
 

@@ -54,7 +54,8 @@ get_header();
               </div>
             <?php endif; ?>
             <div style="display:flex; gap: 0.5rem; flex-wrap: wrap;">
-              <a class="btn btn-primary" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Ver detalles', 'tinta-brava' ); ?></a>
+              <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-primary'; ?>" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Ver detalles', 'tinta-brava' ); ?></a>
+              <?php tinta_brava_buy_button( $product ); ?>
               <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa el ' . get_the_title() ) ); ?>" target="_blank" rel="noopener">WhatsApp</a>
             </div>
           </div>

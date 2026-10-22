@@ -157,7 +157,8 @@ if ( false !== $comma_pos ) {
         </div>
         <?php endif; ?>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Ver detalles', 'tinta-brava' ); ?></a>
+          <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-primary'; ?>" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Ver detalles', 'tinta-brava' ); ?></a>
+          <?php tinta_brava_buy_button( $product ); ?>
           <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_msg ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
         </div>
       </div>

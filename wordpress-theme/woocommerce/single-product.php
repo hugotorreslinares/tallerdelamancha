@@ -89,7 +89,8 @@ $wa_message     = sprintf( 'Hola, quiero el %s', $product->get_name() );
           <?php endif; ?>
 
           <div class="product-cta">
-            <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message . ' (' . tinta_brava_format_price( $product->get_price() ) . ')' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
+            <?php tinta_brava_buy_button( $product, 'btn-lg' ); ?>
+            <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-whatsapp'; ?> btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message . ' (' . tinta_brava_format_price( $product->get_price() ) . ')' ) ); ?>" target="_blank" rel="noopener"><?php echo tinta_brava_online_checkout_enabled() ? esc_html__( 'Preguntar por WhatsApp', 'tinta-brava' ) : esc_html__( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
             <a class="btn btn-ghost btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, tienen descuento en ferias?' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Reservar para feria', 'tinta-brava' ); ?></a>
           </div>
           <p style="font-size: var(--fs-sm); color: var(--color-muted); margin-top: 1rem;">

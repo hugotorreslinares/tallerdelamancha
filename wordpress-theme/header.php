@@ -78,6 +78,9 @@
           <li><a href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><?php esc_html_e( 'Contacto', 'tinta-brava' ); ?></a></li>
         </ul>
       <?php } ?>
+      <?php if ( tinta_brava_online_checkout_enabled() && function_exists( 'WC' ) && WC()->cart ) : ?>
+        <a class="btn btn-ghost" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><?php printf( esc_html__( 'Carrito (%d)', 'tinta-brava' ), WC()->cart->get_cart_contents_count() ); ?></a>
+      <?php endif; ?>
       <a class="btn btn-whatsapp nav-cta" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa un kit de Tinta Brava' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="<?php esc_attr_e( 'Cambiar a modo oscuro', 'tinta-brava' ); ?>">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>

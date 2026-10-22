@@ -256,3 +256,28 @@ function tinta_brava_exclude_supplies_tax_query() {
     ),
   );
 }
+
+/**
+ * Compra en línea activa (Personalizar → Tienda). Apagada = modo catálogo + WhatsApp.
+ */
+function tinta_brava_online_checkout_enabled() {
+  return (bool) get_theme_mod( 'tinta_brava_online_checkout', false );
+}
+
+/**
+ * Botón "Comprar ahora": agrega el producto y va directo a finalizar compra.
+ * No imprime nada si la compra en línea está apagada o el producto no se puede comprar.
+ */
+function tinta_brava_buy_button( $product, $extra_class = '' ) {
+  if ( ! tinta_brava_online_checkout_enabled() || ! $product || ! $product->is_purchasable() || ! $product->get_price() ) {
+    return;
+  }
+  $url = add_query_arg( 'add-to-cart', $product->get_id(), wc_get_checkout_url() );
+  printf(
+    '<a class="btn btn-primary %s" href="%s" rel="nofollow">%s</a>',
+    esc_attr( $extra_class ),
+    esc_url( $url ),
+    esc_html__( 'Comprar ahora', 'tinta-brava' )
+  );
+}
+
