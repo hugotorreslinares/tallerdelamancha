@@ -42,6 +42,15 @@ function tinta_brava_scripts() {
 		);
 	}
 
+	if ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
+		wp_enqueue_style(
+			'tinta-brava-woocommerce',
+			TINTA_BRAVA_URI . '/assets/css/woocommerce.css',
+			array( 'tinta-brava-theme' ),
+			tinta_brava_asset_version( 'assets/css/woocommerce.css' )
+		);
+	}
+
 	wp_enqueue_script(
 		'tinta-brava-main',
 		TINTA_BRAVA_URI . '/assets/js/main.js',

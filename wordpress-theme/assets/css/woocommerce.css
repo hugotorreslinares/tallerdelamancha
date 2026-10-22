@@ -1,0 +1,133 @@
+/* Carrito, finalizar compra y mi cuenta (shortcodes clásicos de WooCommerce).
+   Se carga solo en esas páginas; el tema desactiva los estilos de WooCommerce. */
+
+.woocommerce { line-height: 1.6; }
+.woocommerce h3 { margin: var(--space-6) 0 var(--space-4); }
+
+/* Avisos */
+.woocommerce-message, .woocommerce-info, .woocommerce-error {
+  list-style: none;
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-left: 4px solid var(--color-moss);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+}
+.woocommerce-error { border-left-color: var(--color-terracotta); }
+.woocommerce-message .button { float: right; margin-left: var(--space-4); }
+
+/* Formularios */
+.woocommerce form .form-row { margin: 0 0 var(--space-4); }
+.woocommerce form .form-row label { display: block; font-size: var(--fs-sm); font-weight: 600; margin-bottom: var(--space-2); }
+.woocommerce form .form-row .required { color: var(--color-terracotta); text-decoration: none; }
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-md);
+  font: inherit;
+}
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus,
+.woocommerce form .form-row select:focus {
+  outline: none;
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-ink) 10%, transparent);
+}
+.woocommerce form .form-row textarea { min-height: 110px; resize: vertical; }
+.woocommerce form .form-row input[type="checkbox"] { width: auto; margin-right: var(--space-2); }
+
+.woocommerce .woocommerce-billing-fields__field-wrapper,
+.woocommerce .woocommerce-shipping-fields__field-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-4);
+}
+.woocommerce .form-row-wide { grid-column: 1 / -1; }
+.woocommerce .form-row-first, .woocommerce .form-row-last { float: none; width: auto; }
+@media (max-width: 600px) {
+  .woocommerce .woocommerce-billing-fields__field-wrapper,
+  .woocommerce .woocommerce-shipping-fields__field-wrapper { grid-template-columns: 1fr; }
+}
+
+.woocommerce .col2-set .col-1, .woocommerce .col2-set .col-2 { float: none; width: 100%; }
+.woocommerce #ship-to-different-address label { font-size: var(--fs-lg); font-weight: 600; display: flex; align-items: center; gap: var(--space-2); }
+
+/* Tablas: carrito y resumen del pedido */
+.woocommerce table.shop_table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+  vertical-align: middle;
+}
+.woocommerce table.shop_table tfoot th { font-weight: 600; }
+.woocommerce table.shop_table .order-total th,
+.woocommerce table.shop_table .order-total td,
+.woocommerce table.shop_table .cart-subtotal + tr th { font-size: var(--fs-md); font-weight: 700; }
+.woocommerce table.cart img { width: 64px; height: auto; border-radius: var(--radius-sm); }
+.woocommerce a.remove { color: var(--color-terracotta); font-size: var(--fs-lg); text-decoration: none; }
+.woocommerce .quantity input.qty { width: 4.5rem; padding: 0.5rem; border: 1.5px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-paper-2); color: var(--color-ink); }
+.woocommerce td.actions .coupon { display: flex; gap: var(--space-2); }
+.woocommerce td.actions .coupon input { flex: 1; }
+
+/* Envío y pago */
+.woocommerce ul#shipping_method { list-style: none; margin: 0; padding: 0; }
+.woocommerce ul#shipping_method li { display: flex; align-items: center; gap: var(--space-2); }
+.woocommerce ul#shipping_method li label { margin: 0; }
+.woocommerce #payment { background: var(--color-paper-2); border: 1px solid var(--color-line); border-radius: var(--radius-md); padding: var(--space-4); margin-top: var(--space-5); }
+.woocommerce #payment ul.payment_methods { list-style: none; margin: 0 0 var(--space-4); padding: 0; }
+.woocommerce #payment .payment_box { background: var(--color-paper); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin-top: var(--space-2); font-size: var(--fs-sm); }
+.woocommerce .woocommerce-privacy-policy-text { font-size: var(--fs-sm); color: var(--color-muted); }
+
+/* Botones (equivalentes a .btn-primary / .btn-ghost del tema) */
+.woocommerce #place_order,
+.woocommerce a.checkout-button,
+.woocommerce button.button.alt {
+  display: block;
+  width: 100%;
+  padding: 1.1rem 1.8rem;
+  background: var(--color-terracotta);
+  color: var(--color-fixed-light);
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  font: 700 var(--fs-base) var(--font-sans);
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.woocommerce #place_order:hover,
+.woocommerce a.checkout-button:hover,
+.woocommerce button.button.alt:hover { background: color-mix(in srgb, var(--color-terracotta) 82%, black); color: var(--color-fixed-light); }
+.woocommerce a.button, .woocommerce button.button {
+  display: inline-block;
+  padding: 0.85rem 1.4rem;
+  background: transparent;
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  font: 700 var(--fs-sm) var(--font-sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.woocommerce a.button:hover, .woocommerce button.button:hover { background: var(--color-ink); color: var(--color-paper); }
+
+/* Totales del carrito */
+.woocommerce .cart_totals { max-width: 420px; margin-left: auto; }
+.woocommerce-checkout .woocommerce-form-coupon-toggle { margin-bottom: var(--space-4); }
