@@ -19,6 +19,7 @@
 .woocommerce-message .button { float: right; margin-left: var(--space-4); }
 
 /* Formularios */
+.woocommerce .woocommerce-input-wrapper { display: block; }
 .woocommerce form .form-row { margin: 0 0 var(--space-4); }
 .woocommerce form .form-row label { display: block; font-size: var(--fs-sm); font-weight: 600; margin-bottom: var(--space-2); }
 .woocommerce form .form-row .required { color: var(--color-terracotta); text-decoration: none; }
