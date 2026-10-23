@@ -22,7 +22,7 @@ Dentro de `.post-content`/`.post-body` los `p`, `h2`, `h3` tienen `margin: 0` (e
 Una URL inexistente cae en `index.php` y muestra "Tutoriales — Aún no hay tutoriales publicados".
 **Fix:** `404.php` con mensaje, buscador y enlaces a Kits/Tutoriales. Esfuerzo: 30 min.
 
-### [ ] 4. `theme.css` está desfasado de sus fuentes (57 líneas) y hay trabajo sin commitear
+### [x] 4. `theme.css` está desfasado de sus fuentes (57 líneas) y hay trabajo sin commitear
 Hay reglas que solo existen en el bundle (`.post-content-page/-single`, `.post-hero`, `.author-box`, `.related-*`, `.hero-photo img`), y `page.php`/`single.php`/`theme.css` modificados sin commit (otra sesión). Si alguien regenera el bundle con `cat`, esas reglas desaparecen.
 **Fix:** pasar esas reglas a `pages.css`, commitear el trabajo de `page.php`/`single.php`, regenerar el bundle y comprobar con `diff`. Esfuerzo: 30 min. **Hacerlo antes que cualquier otro cambio de CSS.**
 
@@ -87,19 +87,20 @@ Falta: bundle + `woocommerce.css` aparte, `--fs-2xl` sí se usa (en `.price`), p
 
 El skill `ui-styling` es para React + shadcn + Tailwind; aquí no se instala (obligaría a reescribir el tema). Se aplicó su checklist al CSS actual. Contrastes medidos en producción (WCAG, modo claro).
 
-### [ ] 19. P0 — Botones de WhatsApp con contraste 1,98:1
+### [x] 19. P0 — Botones de WhatsApp con contraste 1,98:1
 `.btn-whatsapp` usa texto blanco sobre `#25D366`: falla WCAG AA (mínimo 4,5:1) en la ficha, el destacado y el CTA final. Además el del header usa texto oscuro (8,28:1) porque `.primary-nav a` (más específico) le pisa el color: dos botones iguales se ven distintos.
-**Fix:** texto `--color-ink` en `.btn-whatsapp` y en `.btn-whatsapp:hover`, y subir su especificidad en el header. 10 min.
+**Resuelto (8,28:1 medido en producción).** Fix aplicado: texto oscuro en `.btn-whatsapp`; el ícono flotante conserva el blanco de marca.
+**Fix original:** texto `--color-ink` en `.btn-whatsapp` y en `.btn-whatsapp:hover`, y subir su especificidad en el header. 10 min.
 
-### [ ] 20. P1 — Sin indicador de foco propio
+### [x] 20. P1 — Sin indicador de foco propio
 No hay `:focus-visible` global: enlaces, botones, tarjetas y el botón de tema usan el contorno por defecto del navegador. En los campos de formulario se quita el contorno (`outline: none`) y el reemplazo es un halo al 8 % de opacidad, casi invisible.
 **Fix:** `:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px }` global y halo real en campos (también en `woocommerce.css`). 15 min.
 
-### [ ] 21. P1 — Menú móvil sin teclado
+### [x] 21. P1 — Menú móvil sin teclado
 El panel cerrado queda fuera de pantalla con `transform` pero con `visibility: visible`, así que sus enlaces siguen en el orden de tabulación. Tampoco cierra con Escape ni devuelve el foco al botón.
 **Fix:** `visibility: hidden` cuando no está abierto, Escape en `main.js` y devolver el foco. 20 min.
 
-### [ ] 22. P1 — Sin `prefers-reduced-motion`
+### [x] 22. P1 — Sin `prefers-reduced-motion`
 El botón flotante de WhatsApp pulsa para siempre (`pulse-wa 2s infinite`) y las tarjetas se mueven al pasar el mouse. Para quien pidió menos movimiento no hay alternativa.
 **Fix:** bloque `@media (prefers-reduced-motion: reduce)` que apaga animación y transformaciones. 5 min.
 
