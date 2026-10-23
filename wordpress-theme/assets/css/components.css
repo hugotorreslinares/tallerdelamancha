@@ -35,9 +35,9 @@
 
 .btn-whatsapp {
   background: var(--color-whatsapp);
-  color: white;
+  color: var(--color-fixed-dark);
 }
-.btn-whatsapp:hover { background: var(--color-whatsapp-dark); color: white; }
+.btn-whatsapp:hover { background: color-mix(in srgb, var(--color-whatsapp) 80%, white); color: var(--color-fixed-dark); }
 
 .btn-outline {
   background: transparent;
@@ -122,9 +122,7 @@
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
 .form-input:focus, .form-textarea:focus, .form-select:focus {
-  outline: none;
   border-color: var(--color-ink);
-  box-shadow: 0 0 0 3px rgba(26,26,26,0.08);
 }
 .form-textarea { resize: vertical; min-height: 140px; }
 

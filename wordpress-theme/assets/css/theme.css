@@ -191,6 +191,18 @@ p { color: var(--color-ink); }
 }
 
 a { transition: color var(--t-fast); }
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+/* Sobre fondos de color constante el contorno oscuro no se vería */
+.site-footer :focus-visible,
+.section-why :focus-visible,
+.section-fair :focus-visible,
+.about-hero :focus-visible {
+  outline-color: var(--color-fixed-light);
+}
 a:hover { color: var(--color-ochre); }
 
 /* Header */
@@ -247,6 +259,8 @@ a:hover { color: var(--color-ochre); }
   color: var(--color-ink);
 }
 .primary-nav a:hover { color: var(--color-ochre); }
+.primary-nav a.btn-whatsapp,
+.primary-nav a.btn-whatsapp:hover { color: var(--color-fixed-dark); }
 .nav-cta { display: inline-flex; }
 .theme-toggle {
   display: inline-grid;
@@ -371,10 +385,15 @@ a:hover { color: var(--color-ochre); }
     background: var(--color-paper);
     padding: var(--space-5);
     transform: translateX(100%);
-    transition: transform var(--t-base);
+    visibility: hidden;
+    transition: transform var(--t-base), visibility 0s linear var(--t-base);
     z-index: 49;
   }
-  .primary-nav.is-open { transform: translateX(0); }
+  .primary-nav.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
+  }
   .primary-nav ul {
     flex-direction: column;
     align-items: stretch;
@@ -401,6 +420,15 @@ a:hover { color: var(--color-ochre); }
   padding-top: 20px;
   padding-bottom: 15px;
   background-color: color-mix(in srgb, var(--color-paper-2) 24%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .card:hover, .category-block:hover, .fair-card:hover, .post-card-full:hover { transform: none; }
 }
 /* Botones */
 .btn {
@@ -439,9 +467,9 @@ a:hover { color: var(--color-ochre); }
 
 .btn-whatsapp {
   background: var(--color-whatsapp);
-  color: white;
+  color: var(--color-fixed-dark);
 }
-.btn-whatsapp:hover { background: var(--color-whatsapp-dark); color: white; }
+.btn-whatsapp:hover { background: color-mix(in srgb, var(--color-whatsapp) 80%, white); color: var(--color-fixed-dark); }
 
 .btn-outline {
   background: transparent;
@@ -526,9 +554,7 @@ a:hover { color: var(--color-ochre); }
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
 .form-input:focus, .form-textarea:focus, .form-select:focus {
-  outline: none;
   border-color: var(--color-ink);
-  box-shadow: 0 0 0 3px rgba(26,26,26,0.08);
 }
 .form-textarea { resize: vertical; min-height: 140px; }
 

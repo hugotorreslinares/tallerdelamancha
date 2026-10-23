@@ -6,21 +6,27 @@
   const navToggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (navToggle && nav) {
+    const isMobile = window.matchMedia('(max-width: 900px)');
+    const setOpen = (open) => {
+      navToggle.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
     navToggle.addEventListener('click', () => {
-      const open = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('is-open', !open);
-      document.body.style.overflow = !open ? 'hidden' : '';
+      setOpen(navToggle.getAttribute('aria-expanded') !== 'true');
     });
     // cerrar al hacer click en un enlace
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
-        if (window.innerWidth < 900) {
-          navToggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('is-open');
-          document.body.style.overflow = '';
-        }
+        if (isMobile.matches) setOpen(false);
       });
+    });
+    // Escape cierra y devuelve el foco al botón
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        setOpen(false);
+        navToggle.focus();
+      }
     });
   }
 
