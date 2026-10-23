@@ -92,8 +92,10 @@ if ( false !== $comma_pos ) {
       ?>
       <a class="category-block category-block--<?php echo esc_attr( $accent ); ?><?php echo $icon_image ? ' category-block--image' : ''; ?>" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
         <span class="category-icon<?php echo $icon_image ? ' category-icon--image' : ''; ?>"><?php echo $icon_image ? $icon_image : tinta_brava_category_icon_svg( $category->slug ); ?></span>
-        <span class="category-name"><?php echo esc_html( $category->name ); ?></span>
-        <span class="category-arrow" aria-hidden="true">→</span>
+        <span class="category-label">
+          <span class="category-name"><?php echo esc_html( $category->name ); ?></span>
+          <span class="category-arrow" aria-hidden="true">→</span>
+        </span>
       </a>
     <?php } ?>
     </div>
