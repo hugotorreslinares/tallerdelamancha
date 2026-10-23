@@ -143,7 +143,9 @@
 .category-block--terracotta { background: var(--color-terracotta); }
 .category-block--navy { background: var(--color-navy); }
 .category-block--mustard { background: var(--color-mustard); }
-.category-icon svg { width: 64px; height: 64px; color: var(--color-fixed-light); }
+.category-icon svg { width: 6.5rem; height: 6.5rem; color: var(--color-fixed-light); }
+.category-icon--image { display: flex; justify-content: center; width: 100%; }
+.category-icon--image img { width: auto; height: auto; max-width: 70%; max-height: 14rem; object-fit: contain; }
 .category-name {
   font-family: var(--font-sans);
   font-weight: 700;

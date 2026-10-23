@@ -90,7 +90,8 @@ if ( false !== $comma_pos ) {
           $accent = tinta_brava_category_accent( $i );
       ?>
       <a class="category-block category-block--<?php echo esc_attr( $accent ); ?>" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
-        <span class="category-icon"><?php echo tinta_brava_category_icon_svg( $category->slug ); ?></span>
+        <?php $icon_image = wp_get_attachment_image( (int) get_term_meta( $category->term_id, 'thumbnail_id', true ), 'medium', false, array( 'alt' => '' ) ); ?>
+        <span class="category-icon<?php echo $icon_image ? ' category-icon--image' : ''; ?>"><?php echo $icon_image ? $icon_image : tinta_brava_category_icon_svg( $category->slug ); ?></span>
         <span class="category-name"><?php echo esc_html( $category->name ); ?></span>
         <span class="category-arrow" aria-hidden="true">→</span>
       </a>
