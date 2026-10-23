@@ -83,6 +83,37 @@ Falta: bundle + `woocommerce.css` aparte, `--fs-2xl` sí se usa (en `.price`), p
 
 ---
 
+## Auditoría con el checklist de ui-styling (accesibilidad, tokens, mobile-first)
+
+El skill `ui-styling` es para React + shadcn + Tailwind; aquí no se instala (obligaría a reescribir el tema). Se aplicó su checklist al CSS actual. Contrastes medidos en producción (WCAG, modo claro).
+
+### [ ] 19. P0 — Botones de WhatsApp con contraste 1,98:1
+`.btn-whatsapp` usa texto blanco sobre `#25D366`: falla WCAG AA (mínimo 4,5:1) en la ficha, el destacado y el CTA final. Además el del header usa texto oscuro (8,28:1) porque `.primary-nav a` (más específico) le pisa el color: dos botones iguales se ven distintos.
+**Fix:** texto `--color-ink` en `.btn-whatsapp` y en `.btn-whatsapp:hover`, y subir su especificidad en el header. 10 min.
+
+### [ ] 20. P1 — Sin indicador de foco propio
+No hay `:focus-visible` global: enlaces, botones, tarjetas y el botón de tema usan el contorno por defecto del navegador. En los campos de formulario se quita el contorno (`outline: none`) y el reemplazo es un halo al 8 % de opacidad, casi invisible.
+**Fix:** `:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px }` global y halo real en campos (también en `woocommerce.css`). 15 min.
+
+### [ ] 21. P1 — Menú móvil sin teclado
+El panel cerrado queda fuera de pantalla con `transform` pero con `visibility: visible`, así que sus enlaces siguen en el orden de tabulación. Tampoco cierra con Escape ni devuelve el foco al botón.
+**Fix:** `visibility: hidden` cuando no está abierto, Escape en `main.js` y devolver el foco. 20 min.
+
+### [ ] 22. P1 — Sin `prefers-reduced-motion`
+El botón flotante de WhatsApp pulsa para siempre (`pulse-wa 2s infinite`) y las tarjetas se mueven al pasar el mouse. Para quien pidió menos movimiento no hay alternativa.
+**Fix:** bloque `@media (prefers-reduced-motion: reduce)` que apaga animación y transformaciones. 5 min.
+
+### [ ] 23. P2 — Terracota en texto pequeño: 4,18:1
+Eyebrows, `.btn-primary` y nombres de categoría en 14–18 px quedan por debajo de 4,5:1. `#B33F29` da ≈4,7:1 (calculado) y se ve casi igual. Cambiar `--color-terracotta` y volver a medir; en oscuro el eyebrow sigue en ≈3,6:1.
+
+### [ ] 24. P2 — CSS desktop-first con 6 breakpoints sueltos
+13 `max-width` y ningún `min-width`; valores 560/600/700/768/800/900 sin escala. Unificar a 2 o 3 puntos (por ejemplo 600 y 900) como tokens documentados. Riesgo medio: probar todas las páginas después.
+
+### [ ] 25. P2 — Tokens que faltan para cerrar el sistema
+Escala de `letter-spacing`, altura del header (`--header-h`, hoy 72 px repetido en 3 sitios), `--color-fixed-light-muted` y tamaño mínimo táctil (`--tap-min: 44px`). Es la base para cerrar los ítems 12, 14 y 15.
+
+---
+
 ## Tienda en línea (no es estilo, pero queda pendiente)
 
 - [ ] Reactivar Personalizar → Tienda → "Activar compra en línea" (está **apagado**).
@@ -96,9 +127,9 @@ Falta: bundle + `woocommerce.css` aparte, `--fs-2xl` sí se usa (en `.price`), p
 
 ## Orden sugerido
 
-1. **Base** (ítems 4, 1, 5, 7): consolidar el bundle y quitar lo que ensucia. ~1 h.
+1. **Base** (ítems 4, 1, 5, 7, 19): consolidar el bundle, quitar lo que ensucia y arreglar el contraste de WhatsApp. ~1,5 h.
 2. **Contenido** (ítems 2, 3, 10): prosa, 404, "Sobre el taller". ~2 h.
 3. **Marca** (ítems 9, 8): rebrand y categorías. ~1,5 h.
 4. **Limpieza** (ítems 11, 12, 13, 17): inline y tokens. ~3 h.
-5. **Móvil y accesibilidad** (ítems 14, 15, 16) y **docs** (18). ~1,5 h.
+5. **Accesibilidad y móvil** (ítems 20, 21, 22, 23, 14, 15, 16, 24, 25) y **docs** (18). ~3 h.
 6. **Tienda**: cuando retomes, con el checklist de arriba.
