@@ -87,10 +87,10 @@ if ( false !== $comma_pos ) {
     <div class="grid <?php echo esc_attr( $numcategories ); ?> category-grid">
       <?php
         foreach ( $categories as $i => $category ) {
-          $accent = tinta_brava_category_accent( $i );
+          $accent     = tinta_brava_category_accent( $i );
+          $icon_image = wp_get_attachment_image( (int) get_term_meta( $category->term_id, 'thumbnail_id', true ), 'large', false, array( 'alt' => '' ) );
       ?>
-      <a class="category-block category-block--<?php echo esc_attr( $accent ); ?>" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
-        <?php $icon_image = wp_get_attachment_image( (int) get_term_meta( $category->term_id, 'thumbnail_id', true ), 'medium', false, array( 'alt' => '' ) ); ?>
+      <a class="category-block category-block--<?php echo esc_attr( $accent ); ?><?php echo $icon_image ? ' category-block--image' : ''; ?>" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
         <span class="category-icon<?php echo $icon_image ? ' category-icon--image' : ''; ?>"><?php echo $icon_image ? $icon_image : tinta_brava_category_icon_svg( $category->slug ); ?></span>
         <span class="category-name"><?php echo esc_html( $category->name ); ?></span>
         <span class="category-arrow" aria-hidden="true">→</span>

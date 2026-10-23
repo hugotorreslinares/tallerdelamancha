@@ -144,8 +144,18 @@
 .category-block--navy { background: var(--color-navy); }
 .category-block--mustard { background: var(--color-mustard); }
 .category-icon svg { width: 6.5rem; height: 6.5rem; color: var(--color-fixed-light); }
-.category-icon--image { display: flex; justify-content: center; width: 100%; }
-.category-icon--image img { width: auto; height: auto; max-width: 70%; max-height: 14rem; object-fit: contain; }
+/* Con imagen de categoría: cubre todo el cuadrado; el nombre va abajo sobre un degradado */
+.category-block--image { position: relative; overflow: hidden; justify-content: flex-end; padding: var(--space-5); }
+.category-block--image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 55%);
+}
+.category-icon--image { position: absolute; inset: 0; }
+.category-icon--image img { width: 100%; height: 100%; object-fit: cover; }
+.category-block--image .category-name,
+.category-block--image .category-arrow { position: relative; z-index: 1; }
 .category-name {
   font-family: var(--font-sans);
   font-weight: 700;
