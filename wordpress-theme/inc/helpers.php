@@ -79,9 +79,17 @@ function tinta_brava_event_schema( $post_id ) {
 /**
  * Helpers
  */
-function tinta_brava_whatsapp_url( $message = '' ) {
-  $num = get_theme_mod( 'tinta_brava_whatsapp', '573000000000' );
-  return 'https://wa.me/' . $num . '?text=' . rawurlencode( $message );
+/**
+ * Enlace de WhatsApp. $origin dice desde qué botón se hizo clic y se agrega
+ * al final del mensaje para que quien atiende sepa de dónde viene el cliente.
+ */
+function tinta_brava_whatsapp_url( $message = '', $origin = '' ) {
+  $num  = get_theme_mod( 'tinta_brava_whatsapp', '573000000000' );
+  $text = '' !== $message ? $message : 'Hola, quiero información de ' . get_bloginfo( 'name' );
+  if ( '' !== $origin ) {
+    $text .= "\n\n(Desde: " . $origin . ')';
+  }
+  return 'https://wa.me/' . $num . '?text=' . rawurlencode( $text );
 }
 
 function tinta_brava_phone_link() {

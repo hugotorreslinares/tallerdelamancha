@@ -48,7 +48,7 @@ get_header();
 
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
         <a class="btn btn-primary btn-lg" href="<?php echo esc_url( home_url( '/kits/' ) ); ?>"><?php esc_html_e( 'Ver los kits', 'tinta-brava' ); ?></a>
-        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url() ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Resolver una duda', 'tinta-brava' ); ?></a>
+        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( '', 'Tutorial · Resolver una duda' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Resolver una duda', 'tinta-brava' ); ?></a>
       </div>
     </div>
   </div>

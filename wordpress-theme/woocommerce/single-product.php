@@ -77,7 +77,7 @@ $wa_message     = sprintf( 'Hola, quiero el %s', $product->get_name() );
             <strong><?php esc_html_e( 'Próximamente:', 'tinta-brava' ); ?></strong> <?php esc_html_e( 'Este kit está en desarrollo. Avísame por WhatsApp cuando esté disponible.', 'tinta-brava' ); ?>
           </div>
           <div class="product-cta">
-            <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message . ' (preventa)' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Avísame cuando llegue', 'tinta-brava' ); ?></a>
+            <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message . ' (preventa)', 'Ficha · avísame cuando llegue' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Avísame cuando llegue', 'tinta-brava' ); ?></a>
             <a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/kits/' ) ); ?>"><?php esc_html_e( 'Ver otros kits', 'tinta-brava' ); ?></a>
           </div>
         <?php else : ?>
@@ -90,8 +90,8 @@ $wa_message     = sprintf( 'Hola, quiero el %s', $product->get_name() );
 
           <div class="product-cta">
             <?php tinta_brava_buy_button( $product, 'btn-lg' ); ?>
-            <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-whatsapp'; ?> btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message . ' (' . tinta_brava_format_price( $product->get_price() ) . ')' ) ); ?>" target="_blank" rel="noopener"><?php echo tinta_brava_online_checkout_enabled() ? esc_html__( 'Preguntar por WhatsApp', 'tinta-brava' ) : esc_html__( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
-            <a class="btn btn-ghost btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, tienen descuento en ferias?' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Reservar para feria', 'tinta-brava' ); ?></a>
+            <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-whatsapp'; ?> btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message . ' (' . tinta_brava_format_price( $product->get_price() ) . ')', 'Ficha · botón principal' ) ); ?>" target="_blank" rel="noopener"><?php echo tinta_brava_online_checkout_enabled() ? esc_html__( 'Preguntar por WhatsApp', 'tinta-brava' ) : esc_html__( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
+            <a class="btn btn-ghost btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, tienen descuento en ferias?', 'Ficha · reservar para feria' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Reservar para feria', 'tinta-brava' ); ?></a>
           </div>
           <p style="font-size: var(--fs-sm); color: var(--color-muted); margin-top: 1rem;">
             <?php esc_html_e( 'Envíos a toda Colombia · Pago por transferencia Bancolombia, Nequi o Daviplata · Contra entrega solo en Bogotá', 'tinta-brava' ); ?>
@@ -126,7 +126,7 @@ $wa_message     = sprintf( 'Hola, quiero el %s', $product->get_name() );
       <div class="cta-inner">
         <h2><?php esc_html_e( '¿Te animas?', 'tinta-brava' ); ?></h2>
         <p><?php esc_html_e( 'Escríbenos, separamos tu kit y te lo enviamos o lo recoges en la próxima feria.', 'tinta-brava' ); ?></p>
-        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir este kit por WhatsApp', 'tinta-brava' ); ?></a>
+        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_message, 'Ficha · CTA final' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir este kit por WhatsApp', 'tinta-brava' ); ?></a>
       </div>
     </div>
   </div>

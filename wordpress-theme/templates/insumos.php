@@ -51,7 +51,7 @@ $supplies = new WP_Query( array(
                 <span class="price"><?php echo esc_html( tinta_brava_format_price( $price ) ); ?></span>
               </div>
             <?php endif; ?>
-            <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, quiero pedir: ' . get_the_title() ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
+            <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, quiero pedir: ' . get_the_title(), 'Insumos' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
           </div>
         </article>
       <?php endwhile; wp_reset_postdata();

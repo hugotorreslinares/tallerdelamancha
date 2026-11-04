@@ -57,7 +57,7 @@ get_header();
             <?php if ( $stand ) : ?><strong><?php esc_html_e( 'Stand:', 'tinta-brava' ); ?></strong> <?php echo esc_html( $stand ); ?><br><?php endif; ?>
             <?php if ( $time ) : ?><strong><?php esc_html_e( 'Horario:', 'tinta-brava' ); ?></strong> <?php echo esc_html( $time ); ?><?php endif; ?>
           </p>
-          <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me reservas un kit para ' . get_the_title() ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Reservar kit para recoger', 'tinta-brava' ); ?></a>
+          <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me reservas un kit para ' . get_the_title(), 'Ferias · reservar kit' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Reservar kit para recoger', 'tinta-brava' ); ?></a>
         </div>
       </article>
     <?php endwhile; wp_reset_postdata();
@@ -104,7 +104,7 @@ get_header();
       <div class="cta-inner">
         <h2><?php esc_html_e( '¿Quieres que vayamos a tu feria?', 'tinta-brava' ); ?></h2>
         <p><?php esc_html_e( 'Si organizas una feria de diseño, ilustración o arte en Bogotá y crees que encajamos, escríbenos. Llevamos el taller a donde nos necesiten.', 'tinta-brava' ); ?></p>
-        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, organizo una feria y me gustaría que Tinta Brava estuviera' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Invitarnos a una feria', 'tinta-brava' ); ?></a>
+        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, organizo una feria y me gustaría que ' . get_bloginfo( 'name' ) . ' estuviera', 'Ferias · invitarnos' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Invitarnos a una feria', 'tinta-brava' ); ?></a>
       </div>
     </div>
   </div>

@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function tinta_brava_whatsapp_shortcode( $atts, $content = '' ) {
   $atts = shortcode_atts( array(
-    'message' => 'Hola, me interesa un kit de Tinta Brava',
+    'message' => 'Hola, me interesa un kit de ' . get_bloginfo( 'name' ),
     'label'   => $content ?: __( 'Pedir por WhatsApp', 'tinta-brava' ),
     'style'   => 'whatsapp',
     'size'    => '',
@@ -35,7 +35,7 @@ function tinta_brava_whatsapp_shortcode( $atts, $content = '' ) {
 
   $size_class = $atts['size'] === 'lg' ? ' btn-lg' : '';
   $classes = trim( 'btn btn-' . $atts['style'] . $size_class . ' ' . $atts['class'] );
-  $url     = tinta_brava_whatsapp_url( $atts['message'] );
+  $url     = tinta_brava_whatsapp_url( $atts['message'], 'Botón insertado en una página' );
 
   return sprintf(
     '<a class="%s" href="%s" target="_blank" rel="noopener">%s</a>',
@@ -66,7 +66,7 @@ function tinta_brava_kit_card_shortcode( $atts ) {
   $img       = get_the_post_thumbnail_url( $p->get_id(), 'tinta-brava-card' );
   $cats      = wp_get_post_terms( $p->get_id(), 'product_cat', array( 'fields' => 'names' ) );
   $wa_msg    = sprintf( 'Hola, me interesa el %s', $p->get_name() );
-  $wa_url    = tinta_brava_whatsapp_url( $is_coming ? $wa_msg . ' (preventa)' : $wa_msg );
+  $wa_url    = tinta_brava_whatsapp_url( $is_coming ? $wa_msg . ' (preventa)' : $wa_msg, 'Tarjeta de kit (shortcode)' );
 
   ob_start();
   ?>
@@ -137,7 +137,7 @@ add_shortcode( 'tinta_brava_fair_count', 'tinta_brava_fair_count_shortcode' );
 function tinta_brava_floating_whatsapp_shortcode() {
   ob_start();
   ?>
-  <a class="float-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa un kit de Tinta Brava' ) ); ?>" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a class="float-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa un kit de ' . get_bloginfo( 'name' ), 'Botón flotante (shortcode)' ) ); ?>" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977.873 2.78 1.247 2.477 2.81 4.382 5.32 5.629.741.372 2.139.93 2.965.93.873 0 2.749-.358 3.349-1.146.23-.3.372-.645.372-1.004 0-.23-.043-.444-.158-.658-.302-.558-2.18-1.78-2.582-1.78zM16 0C7.16 0 0 7.16 0 16c0 3.36.99 6.51 2.71 9.18L0 32l6.97-2.65A15.9 15.9 0 0 0 16 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm0 29.21c-2.75 0-5.31-.84-7.43-2.27l-.53-.32-4.13 1.57 1.4-4.02-.35-.55A13.21 13.21 0 0 1 2.79 16C2.79 8.69 8.69 2.79 16 2.79S29.21 8.69 29.21 16 23.31 29.21 16 29.21z"/></svg>
   </a>
   <?php

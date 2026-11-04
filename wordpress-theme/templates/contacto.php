@@ -22,7 +22,7 @@ get_header();
         <h3><?php esc_html_e( 'Canales directos', 'tinta-brava' ); ?></h3>
         <p style="color: var(--color-muted);"><?php esc_html_e( 'Si quieres un kit, resolver una duda, invitarnos a una feria o pedir un kit personalizado, escríbenos por aquí:', 'tinta-brava' ); ?></p>
         <div class="contact-channels">
-          <a class="contact-channel" href="<?php echo esc_url( tinta_brava_whatsapp_url() ); ?>" target="_blank" rel="noopener">
+          <a class="contact-channel" href="<?php echo esc_url( tinta_brava_whatsapp_url( '', 'Contacto' ) ); ?>" target="_blank" rel="noopener">
             <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-whatsapp); display: grid; place-items: center; color: white; flex-shrink: 0;">✉</div>
             <div>
               <strong>WhatsApp</strong>

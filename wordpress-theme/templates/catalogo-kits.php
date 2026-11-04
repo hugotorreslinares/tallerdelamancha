@@ -56,7 +56,7 @@ get_header();
             <div style="display:flex; gap: 0.5rem; flex-wrap: wrap;">
               <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-primary'; ?>" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Ver detalles', 'tinta-brava' ); ?></a>
               <?php tinta_brava_buy_button( $product ); ?>
-              <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa el ' . get_the_title() ) ); ?>" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, me interesa el ' . get_the_title(), 'Catálogo · tarjeta de kit' ) ); ?>" target="_blank" rel="noopener">WhatsApp</a>
             </div>
           </div>
         </article>
@@ -71,7 +71,7 @@ get_header();
       <div class="cta-inner">
         <h2><?php esc_html_e( '¿No sabes cuál te conviene?', 'tinta-brava' ); ?></h2>
         <p><?php esc_html_e( 'Escríbenos por WhatsApp, te preguntamos tu experiencia y te recomendamos el kit adecuado.', 'tinta-brava' ); ?></p>
-        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, necesito ayuda eligiendo un kit' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Recomendadme un kit', 'tinta-brava' ); ?></a>
+        <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, necesito ayuda eligiendo un kit', 'Catálogo · ayuda para elegir' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Recomendadme un kit', 'tinta-brava' ); ?></a>
       </div>
     </div>
   </div>

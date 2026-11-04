@@ -105,7 +105,7 @@ function tinta_brava_loop_whatsapp_button() {
 
   $is_coming = get_post_meta( $product->get_id(), '_tinta_brava_coming_soon', true );
   $message   = sprintf( 'Hola, me interesa el %s', $product->get_name() );
-  $wa_url    = tinta_brava_whatsapp_url( $is_coming ? $message . ' (preventa)' : $message );
+  $wa_url    = tinta_brava_whatsapp_url( $is_coming ? $message . ' (preventa)' : $message, 'Listado de WooCommerce' );
 
   if ( $is_coming ) {
     echo '<a class="button btn btn-whatsapp product_type_simple" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Avisarme', 'tinta-brava' ) . '</a>';

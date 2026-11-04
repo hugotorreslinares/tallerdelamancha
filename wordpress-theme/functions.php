@@ -512,7 +512,7 @@ function tinta_brava_handle_contact_form() {
   }
 
   $to      = get_theme_mod( 'tinta_brava_email', 'hola@tintabrava.co' );
-  $subj    = '[Tinta Brava] ' . $subject;
+  $subj    = '[' . get_bloginfo( 'name' ) . '] ' . $subject;
   $body    = sprintf( "Nombre: %s\nCorreo: %s\nAsunto: %s\n\nMensaje:\n%s", $name, $email, $subject, $message );
   $headers = array( 'Reply-To: ' . $name . ' <' . $email . '>' );
 

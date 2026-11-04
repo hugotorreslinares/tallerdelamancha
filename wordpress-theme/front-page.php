@@ -162,7 +162,7 @@ if ( false !== $comma_pos ) {
         <div class="hero-actions">
           <a class="btn <?php echo tinta_brava_online_checkout_enabled() ? 'btn-ghost' : 'btn-primary'; ?>" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Ver detalles', 'tinta-brava' ); ?></a>
           <?php tinta_brava_buy_button( $product ); ?>
-          <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_msg ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
+          <a class="btn btn-whatsapp" href="<?php echo esc_url( tinta_brava_whatsapp_url( $wa_msg, 'Portada · producto destacado' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Pedir por WhatsApp', 'tinta-brava' ); ?></a>
         </div>
       </div>
     </div>
@@ -330,7 +330,7 @@ endif;
     <h2><?php esc_html_e( '¿Listo para empezar?', 'tinta-brava' ); ?></h2>
     <p><?php esc_html_e( 'Escríbenos por WhatsApp, te contamos qué kit te conviene según tu experiencia y lo separamos para la próxima feria o te lo enviamos a casa.', 'tinta-brava' ); ?></p>
     <div class="hero-actions">
-      <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, quiero empezar con Tinta Brava' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Hablar por WhatsApp', 'tinta-brava' ); ?></a>
+      <a class="btn btn-whatsapp btn-lg" href="<?php echo esc_url( tinta_brava_whatsapp_url( 'Hola, quiero empezar con ' . get_bloginfo( 'name' ), 'Portada · CTA final' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Hablar por WhatsApp', 'tinta-brava' ); ?></a>
       <a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/kits/' ) ); ?>"><?php esc_html_e( 'Ver los kits primero', 'tinta-brava' ); ?></a>
     </div>
   </div>
