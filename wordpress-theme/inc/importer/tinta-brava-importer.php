@@ -105,6 +105,23 @@ function tinta_brava_importer_page() {
 }
 
 /**
+ * Obtiene el ID de una categoría o la crea si no existe.
+ *
+ * @param string $category Name of the category.
+ * @return int|0 Category ID or 0 on failure.
+ */
+function tinta_brava_get_or_create_category( $category ) {
+  $term = term_exists( $category, 'category' );
+  if ( ! $term ) {
+    $term = wp_insert_term( $category, 'category' );
+  }
+  if ( is_wp_error( $term ) ) {
+    return 0;
+  }
+  return is_array( $term ) ? $term['term_id'] : $term;
+}
+
+/**
  * Ejecutar la importación
  *
  * @return array
@@ -295,7 +312,7 @@ function tinta_brava_run_import() {
       continue;
     }
 
-    $cat_id = wp_create_category( $t['cat'] );
+    $cat_id = tinta_brava_get_or_create_category( $t['cat'] );
     $post_id = wp_insert_post( array(
       'post_title'   => $t['title'],
       'post_content' => $t['content'],
