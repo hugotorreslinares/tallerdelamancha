@@ -9,7 +9,7 @@ get_header();
 
 <article class="section">
   <div class="container">
-    <div class="post-content" style="max-width: 720px; margin: 0 auto;">
+    <div class="post-content post-content-single">
       <p class="breadcrumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Inicio', 'tinta-brava' ); ?></a> /
         <a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/tutoriales/' ) ); ?>"><?php esc_html_e( 'Tutoriales', 'tinta-brava' ); ?></a> /
@@ -29,16 +29,16 @@ get_header();
       </p>
 
       <?php if ( has_post_thumbnail() ) : ?>
-        <div class="post-hero" style="border-radius: var(--radius-lg); margin: 2rem 0; overflow: hidden;">
+        <div class="post-hero">
           <?php the_post_thumbnail( 'large' ); ?>
         </div>
       <?php endif; ?>
 
-      <div class="post-body" style="line-height: 1.7;">
+      <div class="post-body">
         <?php the_content(); ?>
       </div>
 
-      <div class="author-box" style="display: flex; gap: 1rem; align-items: center; padding: 1.5rem; background: var(--color-paper-2); border-radius: var(--radius-lg); margin: 2rem 0;">
+      <div class="author-box">
         <?php echo get_avatar( get_the_author_meta( 'ID' ), 56, '', '', array( 'style' => 'border-radius:50%' ) ); ?>
         <div>
           <strong><?php the_author(); ?></strong>
@@ -57,10 +57,10 @@ get_header();
 <?php
 $related = tinta_brava_related_posts();
 if ( $related->have_posts() ) : ?>
-<section class="section" style="background: var(--color-paper-2); padding-top: 4rem; padding-bottom: 4rem;">
+<section class="section related-section">
   <div class="container">
     <h2><?php esc_html_e( 'Otros tutoriales', 'tinta-brava' ); ?></h2>
-    <div class="grid grid-3" style="margin-top: 2rem;">
+    <div class="grid grid-3 related-grid">
       <?php while ( $related->have_posts() ) : $related->the_post(); ?>
         <article class="card">
           <div class="card-img"><?php if ( has_post_thumbnail() ) : the_post_thumbnail( 'tinta-brava-card' ); endif; ?></div>

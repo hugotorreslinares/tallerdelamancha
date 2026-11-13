@@ -18,7 +18,7 @@ get_header();
 
 <section class="section">
   <div class="container">
-    <div class="post-content" style="max-width: 760px; margin: 0 auto; line-height: 1.7;">
+    <div class="post-content post-content-page">
       <?php the_content(); ?>
     </div>
   </div>
