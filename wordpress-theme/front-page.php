@@ -52,13 +52,13 @@ if ( false !== $comma_pos ) {
       <div
     class="hero-photo hero-photo-1">
         <?php if ( $image1 ) : ?>
-       <img src="<?php echo esc_url( $image1 ); ?>" alt="">
+       <?php echo wp_get_attachment_image( get_theme_mod( 'tinta_brava_hero_image_1' ), 'medium', false, array( 'alt' => '', 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
     <?php endif; ?>
 </div>
 
 <div class="hero-photo hero-photo-2">
     <?php if ( $image2 ) : ?>
-        <img src="<?php echo esc_url( $image2 ); ?>" alt="">
+        <?php echo wp_get_attachment_image( get_theme_mod( 'tinta_brava_hero_image_2' ), 'medium', false, array( 'alt' => '', 'loading' => 'eager' ) ); ?>
     <?php endif; ?>
 </div>
       <div class="hero-stamp">★ <?php esc_html_e( 'Disponibilidad limitada', 'tinta-brava' ); ?></div>
@@ -88,7 +88,7 @@ if ( false !== $comma_pos ) {
       <?php
         foreach ( $categories as $i => $category ) {
           $accent     = tinta_brava_category_accent( $i );
-          $icon_image = wp_get_attachment_image( (int) get_term_meta( $category->term_id, 'thumbnail_id', true ), 'large', false, array( 'alt' => '' ) );
+          $icon_image = wp_get_attachment_image( (int) get_term_meta( $category->term_id, 'thumbnail_id', true ), 'large' );
       ?>
       <a class="category-block category-block--<?php echo esc_attr( $accent ); ?><?php echo $icon_image ? ' category-block--image' : ''; ?>" href="<?php echo esc_url( home_url( '/kits/#' . $category->slug ) ); ?>">
         <span class="category-icon<?php echo $icon_image ? ' category-icon--image' : ''; ?>"><?php echo $icon_image ? $icon_image : tinta_brava_category_icon_svg( $category->slug ); ?></span>
@@ -138,7 +138,7 @@ if ( false !== $comma_pos ) {
       <div class="featured-copy">
         <span class="featured-leaf">
           <?php if ( $featured_leaf_image ) : ?>
-            <img src="<?php echo esc_url( $featured_leaf_image ); ?>" alt="" />
+            <img src="<?php echo esc_url( $featured_leaf_image ); ?>" alt="" loading="lazy" decoding="async" />
           <?php else : ?>
             <?php echo tinta_brava_leaf_branch_svg(); ?>
           <?php endif; ?>
@@ -200,7 +200,7 @@ $bogota_stamp_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_b
 <section class="section made-in-bogota">
   <div class="container made-in-bogota-grid">
     <?php if ( $bogota_image ) : ?>
-    <div class="made-in-bogota-photo" aria-hidden="true"><img src="<?php echo esc_url( $bogota_image ); ?>" alt="" /></div>
+    <div class="made-in-bogota-photo" aria-hidden="true"><img src="<?php echo esc_url( $bogota_image ); ?>" alt="" loading="lazy" decoding="async" /></div>
     <?php else : ?>
     <div class="made-in-bogota-skyline" aria-hidden="true"><?php echo tinta_brava_bogota_skyline_svg(); ?></div>
     <?php endif; ?>
@@ -211,7 +211,7 @@ $bogota_stamp_image = wp_get_attachment_image_url( get_theme_mod( 'tinta_brava_b
     </div>
     <div class="made-in-bogota-stamp" aria-hidden="true">
       <?php if ( $bogota_stamp_image ) : ?>
-        <img src="<?php echo esc_url( $bogota_stamp_image ); ?>" alt="" />
+        <img src="<?php echo esc_url( $bogota_stamp_image ); ?>" alt="" loading="lazy" decoding="async" />
       <?php else : ?>
         <?php echo tinta_brava_bogota_stamp_svg(); ?>
       <?php endif; ?>

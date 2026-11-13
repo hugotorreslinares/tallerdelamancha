@@ -401,6 +401,7 @@ require_once TINTA_BRAVA_DIR . '/inc/enqueue.php';
 require_once TINTA_BRAVA_DIR . '/inc/helpers.php';
 require_once TINTA_BRAVA_DIR . '/inc/shortcodes.php';
 require_once TINTA_BRAVA_DIR . '/inc/setup.php';
+require_once TINTA_BRAVA_DIR . '/inc/seo-security.php';
 
 /**
  * Cargar WooCommerce (solo si está activo)
